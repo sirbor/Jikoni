@@ -1,4 +1,4 @@
-// app/src/main/java/com/example/jikoni/MainActivity.kt
+// File: src/main/java/com/example/jikoni/MainActivity.kt
 package com.example.jikoni
 
 import android.annotation.SuppressLint
@@ -29,10 +29,17 @@ class MainActivity : ComponentActivity() {
         val checklist = findViewById<LinearLayout>(R.id.checklist)
         val submitChecklist = findViewById<RadioButton>(R.id.submitChecklist)
         val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-        val clearButton = findViewById<Button>(R.id.clearButton)
 
         // Enable JavaScript if needed
         webView.settings.javaScriptEnabled = true
+
+        // Set up AutoCompleteTextView adapter
+        val menuItemsAndLocationsAndDishes = arrayOf(
+            "Indian", "Thai", "Chinese", "Islander", "Nordic", "Pizza", "Burger", "Pasta",
+            "Butter Chicken", "Pad Thai", "Sweet and Sour Pork", "Island Fish", "Nordic Salmon"
+        )
+        val autoCompleteAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, menuItemsAndLocationsAndDishes)
+        autoCompleteTextView.setAdapter(autoCompleteAdapter)
 
         // Set up Toggle Button click listener
         toggleButton.setOnCheckedChangeListener { _, isChecked ->
@@ -47,8 +54,6 @@ class MainActivity : ComponentActivity() {
                 webView.loadDataWithBaseURL(null, getString(R.string.vintage_menu_html), "text/html", "UTF-8", null)
                 bookAppointmentButton.visibility = View.VISIBLE
                 submitChecklist.visibility = View.GONE
-                autoCompleteTextView.visibility = View.VISIBLE
-                clearButton.visibility = View.VISIBLE
             }
         }
 
@@ -58,6 +63,7 @@ class MainActivity : ComponentActivity() {
             val menuHtml = getString(R.string.vintage_menu_html)
             webView.loadDataWithBaseURL(null, menuHtml, "text/html", "UTF-8", null)
             bookAppointmentButton.visibility = View.VISIBLE
+            autoCompleteTextView.visibility = View.VISIBLE
             if (toggleButton.isChecked) {
                 checklist.visibility = View.VISIBLE
                 submitChecklist.visibility = View.VISIBLE
@@ -86,16 +92,6 @@ class MainActivity : ComponentActivity() {
             val confirmedDetails = findViewById<TextView>(R.id.confirmedDetails)
             confirmedDetails.text = "Selected Locations: ${selectedLocations.joinToString(", ")}"
             confirmedDetails.visibility = View.VISIBLE
-        }
-
-        // Set up AutoCompleteTextView
-        val items = arrayOf("Indian", "Thai", "Chinese", "Islander", "Nordic", "Menu Item 1", "Menu Item 2")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, items)
-        autoCompleteTextView.setAdapter(adapter)
-
-        // Set up Clear Button click listener
-        clearButton.setOnClickListener {
-            autoCompleteTextView.text.clear()
         }
     }
 
