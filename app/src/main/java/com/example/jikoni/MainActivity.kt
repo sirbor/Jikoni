@@ -1,4 +1,3 @@
-// File: src/main/java/com/example/jikoni/MainActivity.kt
 package com.example.jikoni
 
 import android.annotation.SuppressLint
