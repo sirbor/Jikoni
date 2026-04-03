@@ -8,7 +8,7 @@ struct RecipeCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
+                AsyncImage(url: URL(string: recipe.imageUrls.first ?? "")) { phase in
                     switch phase {
                     case .empty:
                         Rectangle()

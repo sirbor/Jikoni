@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05335FE47518014B804D5353 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226271048D1915582D0D2F1 /* AuthRepository.swift */; };
 		0B7B18A91C12E53F2C208EB0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88612EEC295C86617B204F05 /* ProfileView.swift */; };
+		184013448853FCEA94DAA491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3E2F6796126DAAAB596D9B /* Assets.xcassets */; };
 		209C13890A0C4251E708CCAB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC130C9F966913B81EA87E13 /* Review.swift */; };
 		2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */; };
 		291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126569B1E28B771DA3D32DB /* CartView.swift */; };
@@ -100,6 +101,7 @@
 		EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVaultView.swift; sourceTree = "<group>"; };
 		F0C6F1B86157A1661F250464 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		F126569B1E28B771DA3D32DB /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		FA3E2F6796126DAAAB596D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC130C9F966913B81EA87E13 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,6 +278,7 @@
 		FD576B65B39EB2B9000D469D /* Jikoni */ = {
 			isa = PBXGroup;
 			children = (
+				FA3E2F6796126DAAAB596D9B /* Assets.xcassets */,
 				3EEEBD3F130519BB20FA8903 /* Info.plist */,
 				74E556A53F6D825A56E33EAB /* JikoniApp.swift */,
 				CD3FE5A9321CE11A77DB3E91 /* Data */,
@@ -294,6 +297,7 @@
 			buildConfigurationList = BA9BC7B9205823137E4A3705 /* Build configuration list for PBXNativeTarget "Jikoni" */;
 			buildPhases = (
 				1148635A0A3B83C0EF975AE2 /* Sources */,
+				A11D526A12056B4095EAC1E4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +339,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A11D526A12056B4095EAC1E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184013448853FCEA94DAA491 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1148635A0A3B83C0EF975AE2 /* Sources */ = {

@@ -16,20 +16,28 @@ struct SavedRecipesView: View {
             } else {
                 LazyVStack(spacing: 20) {
                     ForEach(savedRecipes) { recipe in
-                        RecipeCard(
-                            recipe: recipe,
-                            isLiked: recipe.isLikedByMe,
-                            onLike: {
-                                withAnimation(.spring()) {
-                                    feedViewModel.toggleLike(for: recipe)
+                        NavigationLink {
+                            RecipeDetailView(recipe: recipe)
+                        } label: {
+                            RecipeCard(
+                                recipe: recipe,
+                                isLiked: recipe.isLikedByMe,
+                                onLike: {
+                                    withAnimation(.spring()) {
+                                        feedViewModel.toggleLike(for: recipe)
+                                    }
                                 }
-                            }
-                        )
+                            )
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding()
             }
         }
         .navigationTitle("Digital Cookbook")
+        .task {
+            await feedViewModel.fetchRecipes()
+        }
     }
 }

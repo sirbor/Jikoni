@@ -12,9 +12,10 @@ struct JikoniLogo: View {
                     .frame(width: size, height: size)
                     .shadow(color: .orange.opacity(0.3), radius: size/4, x: 0, y: size/8)
                 
-                Image(systemName: "fork.knife")
-                    .font(.system(size: size * 0.5, weight: .black))
-                    .foregroundStyle(.white)
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: size * 0.7, height: size * 0.7)
             }
             
             if showText {

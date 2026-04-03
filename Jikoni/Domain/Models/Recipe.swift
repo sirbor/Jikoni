@@ -4,7 +4,8 @@ struct Recipe: Identifiable, Codable, Equatable {
     let id: String
     let title: String
     let author: String
-    let imageUrl: String
+    let vendorId: String
+    let imageUrls: [String]
     let description: String
     let ingredients: [Ingredient]
     let instructions: [String]

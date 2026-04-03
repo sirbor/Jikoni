@@ -9,20 +9,25 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                // Image Header
-                AsyncImage(url: URL(string: recipe.imageUrl)) { phase in
-                    switch phase {
-                    case .empty:
-                        Rectangle().fill(Color.gray.opacity(0.1)).overlay(ProgressView())
-                    case .success(let image):
-                        image.resizable().aspectRatio(contentMode: .fill)
-                    case .failure:
-                        Rectangle().fill(Color.gray.opacity(0.2)).overlay(Image(systemName: "photo"))
-                    @unknown default:
-                        EmptyView()
+                // Image Header Carousel
+                TabView {
+                    ForEach(recipe.imageUrls, id: \.self) { imageUrl in
+                        AsyncImage(url: URL(string: imageUrl)) { phase in
+                            switch phase {
+                            case .empty:
+                                Rectangle().fill(Color.gray.opacity(0.1)).overlay(ProgressView())
+                            case .success(let image):
+                                image.resizable().aspectRatio(contentMode: .fill)
+                            case .failure:
+                                Rectangle().fill(Color.gray.opacity(0.2)).overlay(Image(systemName: "photo"))
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
                     }
                 }
-                .frame(height: 250)
+                .tabViewStyle(.page)
+                .frame(height: 300)
                 .clipped()
                 
                 VStack(alignment: .leading, spacing: 24) {
@@ -48,9 +53,24 @@ struct RecipeDetailView: View {
                             }
                         }
                         
-                        Text("by \(recipe.author)")
-                            .foregroundStyle(.secondary)
-                            .font(.subheadline)
+                        if let vendor = marketplaceViewModel.vendors.first(where: { $0.id == recipe.vendorId }) {
+                            NavigationLink {
+                                VendorDetailView(vendor: vendor)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "storefront.fill")
+                                    Text("From \(vendor.name)")
+                                        .fontWeight(.bold)
+                                }
+                                .font(.subheadline)
+                                .foregroundStyle(.orange)
+                                .padding(.vertical, 4)
+                            }
+                        } else {
+                            Text("by \(recipe.author)")
+                                .foregroundStyle(.secondary)
+                                .font(.subheadline)
+                        }
                     }
                     
                     Text(recipe.description)
@@ -164,7 +184,7 @@ struct CommentView: View {
 }
 
 #Preview {
-    RecipeDetailView(recipe: Recipe(id: "1", title: "Pasta Carbonara", author: "Chef Mario", imageUrl: "https://images.unsplash.com/photo-1612874742237-6526221588e3", description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.", ingredients: [], instructions: ["Boil water", "Cook pasta", "Mix eggs and cheese"], likes: 120, isLikedByMe: false, comments: [
+    RecipeDetailView(recipe: Recipe(id: "1", title: "Pasta Carbonara", author: "Chef Mario", vendorId: "v-2", imageUrls: ["https://images.unsplash.com/photo-1612874742237-6526221588e3", "https://images.unsplash.com/photo-1546069901-ba9599a7e63c", "https://images.unsplash.com/photo-1546767012-bc750392dd33"], description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.", ingredients: [], instructions: ["Boil water", "Cook pasta", "Mix eggs and cheese"], likes: 120, isLikedByMe: false, comments: [
         Comment(id: UUID(), author: "Julia", text: "Best carbonara ever!", date: Date(), replies: [
             Comment(id: UUID(), author: "Mario", text: "Glad you liked it!", date: Date(), replies: [])
         ])

@@ -5,7 +5,7 @@ struct VendorCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AsyncImage(url: URL(string: vendor.imageUrl)) { phase in
+            AsyncImage(url: URL(string: vendor.imageUrls.first ?? "")) { phase in
                 switch phase {
                 case .empty:
                     Rectangle()
