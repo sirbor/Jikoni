@@ -2,6 +2,7 @@ import SwiftUI
 
 struct VendorDetailView: View {
     @Environment(MarketplaceViewModel.self) private var marketplaceViewModel
+    @Environment(FeedViewModel.self) private var feedViewModel
     let vendor: Vendor
     
     var body: some View {
@@ -48,8 +49,23 @@ struct VendorDetailView: View {
                                     .fontWeight(.bold)
                                 
                                 ForEach(inventory[category] ?? []) { ingredient in
-                                    IngredientRow(ingredient: ingredient) {
-                                        marketplaceViewModel.addToCart(ingredient: ingredient)
+                                    HStack(spacing: 12) {
+                                        IngredientRow(ingredient: ingredient) {
+                                            marketplaceViewModel.addToCart(ingredient: ingredient)
+                                        }
+                                        
+                                        if let matchingRecipe = feedViewModel.findRecipe(for: ingredient.name) {
+                                            NavigationLink {
+                                                RecipeDetailView(recipe: matchingRecipe)
+                                            } label: {
+                                                Image(systemName: "text.book.closed.fill")
+                                                    .font(.title3)
+                                                    .foregroundStyle(.orange)
+                                                    .padding(12)
+                                                    .background(.orange.opacity(0.1))
+                                                    .clipShape(Circle())
+                                            }
+                                        }
                                     }
                                 }
                             }

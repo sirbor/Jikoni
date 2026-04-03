@@ -48,4 +48,11 @@ class FeedViewModel {
             }
         }
     }
+    
+    func findRecipe(for dishName: String) -> Recipe? {
+        recipes.first { recipe in
+            recipe.title.localizedCaseInsensitiveContains(dishName) || 
+            dishName.localizedCaseInsensitiveContains(recipe.title)
+        }
+    }
 }

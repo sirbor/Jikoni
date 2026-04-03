@@ -321,6 +321,102 @@ class MockRecipeRepository: RecipeRepository {
             likes: 1100,
             isLikedByMe: false,
             comments: []
+        ),
+        Recipe(
+            id: "r-21",
+            title: "Beef Pilau",
+            author: "Chef Mama Juma",
+            imageUrl: "https://images.unsplash.com/photo-1512058560366-cd242d45869e?q=80&w=800",
+            description: "A fragrant Swahili rice dish cooked with tender beef and warm spices.",
+            ingredients: [
+                Ingredient(name: "Basmati Rice", amount: "500g", price: 3.50, vendorId: "v-1"),
+                Ingredient(name: "Beef Chuck", amount: "500g", price: 8.50, vendorId: "v-3"),
+                Ingredient(name: "Pilau Masala", amount: "2 tbsp", price: 1.50, vendorId: "v-1")
+            ],
+            instructions: ["Boil beef", "Fry onions until dark", "Add masala and meat", "Add rice and water", "Simmer until dry"],
+            likes: 240,
+            isLikedByMe: false,
+            comments: []
+        ),
+        Recipe(
+            id: "r-22",
+            title: "Beef Lasagna",
+            author: "Chef Luigi",
+            imageUrl: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800",
+            description: "Layers of pasta, rich meat sauce, and creamy béchamel baked to perfection.",
+            ingredients: [
+                Ingredient(name: "Lasagna Sheets", amount: "1 pack", price: 4.00, vendorId: "v-2"),
+                Ingredient(name: "Ground Beef", amount: "500g", price: 10.00, vendorId: "v-3"),
+                Ingredient(name: "Mozzarella", amount: "200g", price: 5.00, vendorId: "v-2")
+            ],
+            instructions: ["Cook meat sauce", "Make béchamel", "Layer sauce, pasta, cheese", "Bake for 45 mins"],
+            likes: 890,
+            isLikedByMe: false,
+            comments: []
+        ),
+        Recipe(
+            id: "r-23",
+            title: "Greek Salad",
+            author: "Chef Nikos",
+            imageUrl: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800",
+            description: "A refreshing salad with cucumbers, tomatoes, olives, and high-quality feta.",
+            ingredients: [
+                Ingredient(name: "Feta Cheese", amount: "200g", price: 4.50, vendorId: "v-5"),
+                Ingredient(name: "Cucumber", amount: "1 pc", price: 0.80, vendorId: "v-9"),
+                Ingredient(name: "Olives", amount: "100g", price: 3.00, vendorId: "v-5")
+            ],
+            instructions: ["Chop veggies", "Whisk lemon and oil", "Toss together", "Top with feta and oregano"],
+            likes: 150,
+            isLikedByMe: false,
+            comments: []
+        ),
+        Recipe(
+            id: "r-24",
+            title: "Salmon Rolls",
+            author: "Chef Hiro",
+            imageUrl: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800",
+            description: "Fresh salmon and cucumber rolled in premium sushi rice.",
+            ingredients: [
+                Ingredient(name: "Sushi Rice", amount: "500g", price: 5.00, vendorId: "v-4"),
+                Ingredient(name: "Fresh Salmon", amount: "200g", price: 12.00, vendorId: "v-3"),
+                Ingredient(name: "Nori", amount: "10 sheets", price: 3.50, vendorId: "v-4")
+            ],
+            instructions: ["Prep rice", "Slice salmon", "Roll tightly", "Slice and serve"],
+            likes: 420,
+            isLikedByMe: false,
+            comments: []
+        ),
+        Recipe(
+            id: "r-25",
+            title: "Tuna Nigiri",
+            author: "Chef Jiro",
+            imageUrl: "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?q=80&w=800",
+            description: "Thinly sliced raw tuna over hand-pressed seasoned rice.",
+            ingredients: [
+                Ingredient(name: "Sushi Rice", amount: "200g", price: 3.00, vendorId: "v-4"),
+                Ingredient(name: "Bluefin Tuna", amount: "100g", price: 15.00, vendorId: "v-3"),
+                Ingredient(name: "Wasabi", amount: "1 tsp", price: 1.00, vendorId: "v-1")
+            ],
+            instructions: ["Shape rice balls", "Apply dab of wasabi", "Top with tuna slice", "Press gently"],
+            likes: 1500,
+            isLikedByMe: false,
+            comments: []
+        ),
+        Recipe(
+            id: "r-26",
+            title: "Kachumbari",
+            author: "Chef Omari",
+            imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800",
+            description: "A fresh East African salad of tomatoes, onions, and chili.",
+            ingredients: [
+                Ingredient(name: "Tomatoes", amount: "2 large", price: 1.00, vendorId: "v-2"),
+                Ingredient(name: "Red Onion", amount: "1 medium", price: 0.50, vendorId: "v-2"),
+                Ingredient(name: "Coriander", amount: "1 bunch", price: 0.50, vendorId: "v-4")
+            ],
+            instructions: ["Finely dice veggies", "Soak onions in salt water", "Drain and mix", "Add lemon and chili"],
+            likes: 180,
+            isLikedByMe: false,
+            comments: []
         )
     ]
     

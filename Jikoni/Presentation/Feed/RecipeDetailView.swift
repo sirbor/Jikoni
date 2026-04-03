@@ -25,36 +25,39 @@ struct RecipeDetailView: View {
                 .frame(height: 250)
                 .clipped()
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 24) {
+                    // Header Section
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .top) {
                             Text(recipe.title)
                                 .font(.system(.title2, design: .rounded, weight: .black))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("by \(recipe.author)")
-                                .foregroundStyle(.secondary)
-                                .font(.subheadline)
+                            
+                            Button(action: { 
+                                withAnimation(.spring()) {
+                                    hubViewModel.toggleSavedRecipe(recipe.id)
+                                }
+                            }) {
+                                Image(systemName: hubViewModel.isRecipeSaved(recipe.id) ? "bookmark.fill" : "bookmark")
+                                    .font(.title3)
+                                    .foregroundStyle(.orange)
+                                    .padding(10)
+                                    .background(.orange.opacity(0.1))
+                                    .clipShape(Circle())
+                            }
                         }
                         
-                        Button(action: { 
-                            withAnimation(.spring()) {
-                                hubViewModel.toggleSavedRecipe(recipe.id)
-                            }
-                        }) {
-                            Image(systemName: hubViewModel.isRecipeSaved(recipe.id) ? "bookmark.fill" : "bookmark")
-                                .font(.title3)
-                                .foregroundStyle(.orange)
-                                .padding(10)
-                                .background(.orange.opacity(0.1))
-                                .clipShape(Circle())
-                        }
+                        Text("by \(recipe.author)")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline)
                     }
                     
                     Text(recipe.description)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(nil)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     // Ingredients
@@ -87,6 +90,7 @@ struct RecipeDetailView: View {
                                 Text(instruction)
                                     .font(.subheadline)
                                     .fixedSize(horizontal: false, vertical: true)
+                                    .lineLimit(nil)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
@@ -145,6 +149,8 @@ struct CommentView: View {
             Text(comment.text)
                 .font(.caption)
                 .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(nil)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             if !comment.replies.isEmpty {
                 ForEach(comment.replies) { reply in
