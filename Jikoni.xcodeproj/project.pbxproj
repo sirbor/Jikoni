@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05335FE47518014B804D5353 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226271048D1915582D0D2F1 /* AuthRepository.swift */; };
+		0B7B18A91C12E53F2C208EB0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88612EEC295C86617B204F05 /* ProfileView.swift */; };
+		209C13890A0C4251E708CCAB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC130C9F966913B81EA87E13 /* Review.swift */; };
+		2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */; };
+		291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126569B1E28B771DA3D32DB /* CartView.swift */; };
+		29C31591433857EAD662F7E0 /* SavedRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */; };
+		2B6570D4EBEE3751329FFAD3 /* MockRecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */; };
+		3593CF48776B38172A1A48AC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D2A1BB9631581B7609269 /* Location.swift */; };
+		37EC1D8875BDC1C311F4361B /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */; };
+		38B55CD725249DFF249821EE /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */; };
+		48CD9D7DC9BBA17783FFE97A /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */; };
+		4BB70363F672661F43555C70 /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FF90E956B49831326AE0A2 /* IngredientRow.swift */; };
+		6C304533C6E087E49407901D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97EF183D153C40053C3C00A /* Recipe.swift */; };
+		75F70F5820C8BE2660D2B36B /* VendorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F15E163ADE1874B7D1B98E /* VendorCard.swift */; };
+		77ACA53C320F601AD96390C0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */; };
+		78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */; };
+		7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C12598556F36378A95B8A6 /* SettingsView.swift */; };
+		7FF92D1F48942C0820CB0A79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */; };
+		8986B39444CB2B8B6E98D287 /* MockAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */; };
+		90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215437803622EAB89C95976 /* CartAndWishlistView.swift */; };
+		94B07C616D10C20DD83BFBFE /* JikoniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E556A53F6D825A56E33EAB /* JikoniApp.swift */; };
+		94B9CDD18209AB787B49A10F /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6F1B86157A1661F250464 /* FeedViewModel.swift */; };
+		96B7D57676135FFCAA5FE49B /* PaymentVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */; };
+		9C7C55A8FBEB687F3C068ACE /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF2A8FC038476316C17E50A /* Ingredient.swift */; };
+		A85BC2084A93217F1DB1CBF5 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6C9E53233872FD3A9B4A6 /* FeedView.swift */; };
+		B3335FBF832A22E75C095358 /* MockVendorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */; };
+		B4031856F9B40F52451AA6CF /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */; };
+		B585374214EF07A4EC90F959 /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4F4E64326D93B5F656A229 /* RecipeRepository.swift */; };
+		B65AB9FB93ADDE9BDF6E8B40 /* TrackingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */; };
+		BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85642CC2D42F7E899E2DD350 /* ExploreView.swift */; };
+		BEDD549D15C1AE40FA4386A5 /* MockOrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92DB90E0099743977688439 /* MockOrderRepository.swift */; };
+		C89A90658C32B827373FB9A5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C7468996B81C4E6F54EF3 /* Order.swift */; };
+		CCB660615E8BEDEE2DF214C9 /* SupportCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E141335D60E262DB088547A /* SupportCenterView.swift */; };
+		CCBFCF8713FA5C40A5A16517 /* JikoniLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */; };
+		D2CF1DF44F18CD82BE01FD34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A618A1E048DE24D862641A0 /* User.swift */; };
+		D4266A69E0DB7A771C6979BA /* JikoniButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */; };
+		D4AC7A685251151287841446 /* VendorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E4DE43D7925F359821D7B /* VendorRepository.swift */; };
+		D8879524804999ECD7ADCF4D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F476A37165017187BBE13 /* LoginView.swift */; };
+		D9D28DC01C8D2460AB72C062 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */; };
+		E5B4E7602AC57E6842D48B32 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE749AE4B8DCC435AB2C9A2 /* OrderRepository.swift */; };
+		E746E8F748C389A5E32DBE3D /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46371B77C63E93C5D2D58420 /* TrackingView.swift */; };
+		E7852EF20EDE465E73A5ECFC /* VendorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362936C16AD4947837735FB /* VendorDetailView.swift */; };
+		E860B75DFCEC47E7E7D3B203 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34709767C108C4326F1684A2 /* Vendor.swift */; };
+		ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D2E90B54BF153E59CE5043 /* RewardsView.swift */; };
+		FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubViewModel.swift; sourceTree = "<group>"; };
+		058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
+		08F6C9E53233872FD3A9B4A6 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingOverlay.swift; sourceTree = "<group>"; };
+		1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVaultView.swift; sourceTree = "<group>"; };
+		1E141335D60E262DB088547A /* SupportCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCenterView.swift; sourceTree = "<group>"; };
+		23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		25F15E163ADE1874B7D1B98E /* VendorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCard.swift; sourceTree = "<group>"; };
+		34709767C108C4326F1684A2 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		358E4DE43D7925F359821D7B /* VendorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorRepository.swift; sourceTree = "<group>"; };
+		3EEEBD3F130519BB20FA8903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4226271048D1915582D0D2F1 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecipeRepository.swift; sourceTree = "<group>"; };
+		46371B77C63E93C5D2D58420 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
+		4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniLogo.swift; sourceTree = "<group>"; };
+		52F4734890A351B03C9878F9 /* Jikoni.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Jikoni.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62FF90E956B49831326AE0A2 /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
+		721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
+		74C12598556F36378A95B8A6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		74E556A53F6D825A56E33EAB /* JikoniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniApp.swift; sourceTree = "<group>"; };
+		7A618A1E048DE24D862641A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
+		7F4F4E64326D93B5F656A229 /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
+		85642CC2D42F7E899E2DD350 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		88612EEC295C86617B204F05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniButton.swift; sourceTree = "<group>"; };
+		9362936C16AD4947837735FB /* VendorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailView.swift; sourceTree = "<group>"; };
+		A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthRepository.swift; sourceTree = "<group>"; };
+		A92DB90E0099743977688439 /* MockOrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderRepository.swift; sourceTree = "<group>"; };
+		B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		BAF2A8FC038476316C17E50A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		C00F476A37165017187BBE13 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C215437803622EAB89C95976 /* CartAndWishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAndWishlistView.swift; sourceTree = "<group>"; };
+		CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVendorRepository.swift; sourceTree = "<group>"; };
+		D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D77C7468996B81C4E6F54EF3 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		D97EF183D153C40053C3C00A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		E6D2E90B54BF153E59CE5043 /* RewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
+		EBE749AE4B8DCC435AB2C9A2 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
+		ED3D2A1BB9631581B7609269 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVaultView.swift; sourceTree = "<group>"; };
+		F0C6F1B86157A1661F250464 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		F126569B1E28B771DA3D32DB /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		FC130C9F966913B81EA87E13 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		126AD26A979F54F11FBF395F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BAF2A8FC038476316C17E50A /* Ingredient.swift */,
+				ED3D2A1BB9631581B7609269 /* Location.swift */,
+				D77C7468996B81C4E6F54EF3 /* Order.swift */,
+				D97EF183D153C40053C3C00A /* Recipe.swift */,
+				FC130C9F966913B81EA87E13 /* Review.swift */,
+				7A618A1E048DE24D862641A0 /* User.swift */,
+				34709767C108C4326F1684A2 /* Vendor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		142E45FF13E8B283E6CBA161 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		22CA3B51E593F57D8539139D /* Hub */ = {
+			isa = PBXGroup;
+			children = (
+				EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */,
+				04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */,
+				A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */,
+				1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */,
+				E6D2E90B54BF153E59CE5043 /* RewardsView.swift */,
+				74C12598556F36378A95B8A6 /* SettingsView.swift */,
+				1E141335D60E262DB088547A /* SupportCenterView.swift */,
+			);
+			path = Hub;
+			sourceTree = "<group>";
+		};
+		271D9BDA705C87B16CD9B8F6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				8E91E432C082B23DB56FF328 /* Auth */,
+				BD5F6F219269AFDE75520860 /* Components */,
+				EBA75AE4E881E76E326CBF57 /* Feed */,
+				22CA3B51E593F57D8539139D /* Hub */,
+				FC8E1E9FACA4C47322D7BA18 /* Marketplace */,
+				7CF940F65DB48A83060C365F /* Profile */,
+				BA1CD0BEBCEC5AE0F2C5A6B1 /* Tracking */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4C60C6AEFBBB9FB4A77F0BBF = {
+			isa = PBXGroup;
+			children = (
+				FD576B65B39EB2B9000D469D /* Jikoni */,
+				7F91937A4862EFACB6718CF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7CF940F65DB48A83060C365F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				88612EEC295C86617B204F05 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7F91937A4862EFACB6718CF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52F4734890A351B03C9878F9 /* Jikoni.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E91E432C082B23DB56FF328 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C00F476A37165017187BBE13 /* LoginView.swift */,
+				A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		BA1CD0BEBCEC5AE0F2C5A6B1 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */,
+				46371B77C63E93C5D2D58420 /* TrackingView.swift */,
+				058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		BD5F6F219269AFDE75520860 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				62FF90E956B49831326AE0A2 /* IngredientRow.swift */,
+				8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */,
+				4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */,
+				FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */,
+				23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */,
+				25F15E163ADE1874B7D1B98E /* VendorCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C7386D89BBAD8E163FA00BF2 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				4226271048D1915582D0D2F1 /* AuthRepository.swift */,
+				EBE749AE4B8DCC435AB2C9A2 /* OrderRepository.swift */,
+				7F4F4E64326D93B5F656A229 /* RecipeRepository.swift */,
+				358E4DE43D7925F359821D7B /* VendorRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CD3FE5A9321CE11A77DB3E91 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E0666A9081045D491BD9BE11 /* Mocks */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E0666A9081045D491BD9BE11 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */,
+				A92DB90E0099743977688439 /* MockOrderRepository.swift */,
+				43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */,
+				CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E775DD49BCE94077B9AEE967 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				126AD26A979F54F11FBF395F /* Models */,
+				C7386D89BBAD8E163FA00BF2 /* Repositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		EBA75AE4E881E76E326CBF57 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				08F6C9E53233872FD3A9B4A6 /* FeedView.swift */,
+				F0C6F1B86157A1661F250464 /* FeedViewModel.swift */,
+				B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */,
+				721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		FC8E1E9FACA4C47322D7BA18 /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				C215437803622EAB89C95976 /* CartAndWishlistView.swift */,
+				F126569B1E28B771DA3D32DB /* CartView.swift */,
+				85642CC2D42F7E899E2DD350 /* ExploreView.swift */,
+				7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */,
+				9362936C16AD4947837735FB /* VendorDetailView.swift */,
+			);
+			path = Marketplace;
+			sourceTree = "<group>";
+		};
+		FD576B65B39EB2B9000D469D /* Jikoni */ = {
+			isa = PBXGroup;
+			children = (
+				3EEEBD3F130519BB20FA8903 /* Info.plist */,
+				74E556A53F6D825A56E33EAB /* JikoniApp.swift */,
+				CD3FE5A9321CE11A77DB3E91 /* Data */,
+				E775DD49BCE94077B9AEE967 /* Domain */,
+				142E45FF13E8B283E6CBA161 /* Infrastructure */,
+				271D9BDA705C87B16CD9B8F6 /* Presentation */,
+			);
+			path = Jikoni;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B8A7FCA14FA7DB8B4A4EC98 /* Jikoni */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA9BC7B9205823137E4A3705 /* Build configuration list for PBXNativeTarget "Jikoni" */;
+			buildPhases = (
+				1148635A0A3B83C0EF975AE2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jikoni;
+			packageProductDependencies = (
+			);
+			productName = Jikoni;
+			productReference = 52F4734890A351B03C9878F9 /* Jikoni.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEA6FA31D22CAE548EDA3041 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = F73D70B876D5C89601E417D2 /* Build configuration list for PBXProject "Jikoni" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4C60C6AEFBBB9FB4A77F0BBF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7F91937A4862EFACB6718CF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B8A7FCA14FA7DB8B4A4EC98 /* Jikoni */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1148635A0A3B83C0EF975AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */,
+				05335FE47518014B804D5353 /* AuthRepository.swift in Sources */,
+				90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */,
+				291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */,
+				BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */,
+				A85BC2084A93217F1DB1CBF5 /* FeedView.swift in Sources */,
+				94B9CDD18209AB787B49A10F /* FeedViewModel.swift in Sources */,
+				FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */,
+				9C7C55A8FBEB687F3C068ACE /* Ingredient.swift in Sources */,
+				4BB70363F672661F43555C70 /* IngredientRow.swift in Sources */,
+				94B07C616D10C20DD83BFBFE /* JikoniApp.swift in Sources */,
+				D4266A69E0DB7A771C6979BA /* JikoniButton.swift in Sources */,
+				CCBFCF8713FA5C40A5A16517 /* JikoniLogo.swift in Sources */,
+				D9D28DC01C8D2460AB72C062 /* LaunchScreenView.swift in Sources */,
+				3593CF48776B38172A1A48AC /* Location.swift in Sources */,
+				D8879524804999ECD7ADCF4D /* LoginView.swift in Sources */,
+				48CD9D7DC9BBA17783FFE97A /* MarketplaceViewModel.swift in Sources */,
+				8986B39444CB2B8B6E98D287 /* MockAuthRepository.swift in Sources */,
+				BEDD549D15C1AE40FA4386A5 /* MockOrderRepository.swift in Sources */,
+				2B6570D4EBEE3751329FFAD3 /* MockRecipeRepository.swift in Sources */,
+				B3335FBF832A22E75C095358 /* MockVendorRepository.swift in Sources */,
+				7FF92D1F48942C0820CB0A79 /* NetworkManager.swift in Sources */,
+				C89A90658C32B827373FB9A5 /* Order.swift in Sources */,
+				37EC1D8875BDC1C311F4361B /* OrderHistoryView.swift in Sources */,
+				E5B4E7602AC57E6842D48B32 /* OrderRepository.swift in Sources */,
+				96B7D57676135FFCAA5FE49B /* PaymentVaultView.swift in Sources */,
+				0B7B18A91C12E53F2C208EB0 /* ProfileView.swift in Sources */,
+				6C304533C6E087E49407901D /* Recipe.swift in Sources */,
+				B4031856F9B40F52451AA6CF /* RecipeCard.swift in Sources */,
+				38B55CD725249DFF249821EE /* RecipeDetailView.swift in Sources */,
+				B585374214EF07A4EC90F959 /* RecipeRepository.swift in Sources */,
+				78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */,
+				209C13890A0C4251E708CCAB /* Review.swift in Sources */,
+				ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */,
+				29C31591433857EAD662F7E0 /* SavedRecipesView.swift in Sources */,
+				7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */,
+				CCB660615E8BEDEE2DF214C9 /* SupportCenterView.swift in Sources */,
+				B65AB9FB93ADDE9BDF6E8B40 /* TrackingOverlay.swift in Sources */,
+				E746E8F748C389A5E32DBE3D /* TrackingView.swift in Sources */,
+				77ACA53C320F601AD96390C0 /* TrackingViewModel.swift in Sources */,
+				D2CF1DF44F18CD82BE01FD34 /* User.swift in Sources */,
+				E860B75DFCEC47E7E7D3B203 /* Vendor.swift in Sources */,
+				75F70F5820C8BE2660D2B36B /* VendorCard.swift in Sources */,
+				E7852EF20EDE465E73A5ECFC /* VendorDetailView.swift in Sources */,
+				D4AC7A685251151287841446 /* VendorRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		188DFC50DF90B069053AC536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52C7BC001CAE9775C8931CB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Jikoni/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sirbor.jikoni;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BEBFA9742286C0BC7894891E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Jikoni/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sirbor.jikoni;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA7DAE3E3BD0E4889D9FA718 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA9BC7B9205823137E4A3705 /* Build configuration list for PBXNativeTarget "Jikoni" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEBFA9742286C0BC7894891E /* Debug */,
+				52C7BC001CAE9775C8931CB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F73D70B876D5C89601E417D2 /* Build configuration list for PBXProject "Jikoni" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				188DFC50DF90B069053AC536 /* Debug */,
+				FA7DAE3E3BD0E4889D9FA718 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEA6FA31D22CAE548EDA3041 /* Project object */;
+}
