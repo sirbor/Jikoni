@@ -27,12 +27,7 @@ struct FeedView: View {
                 .padding()
             }
             .background(Color(.systemGroupedBackground))
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    JikoniLogo(size: 30)
-                }
-            }
-            .navigationTitle("") // Logo handles the title
+            .navigationTitle("Jikoni")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $viewModel.searchText, prompt: "Search recipes or categories")
             .overlay {

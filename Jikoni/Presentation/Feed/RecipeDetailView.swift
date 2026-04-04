@@ -7,145 +7,150 @@ struct RecipeDetailView: View {
     @State private var newComment = ""
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                // Image Header Carousel
-                TabView {
-                    ForEach(recipe.imageUrls, id: \.self) { imageUrl in
-                        AsyncImage(url: URL(string: imageUrl)) { phase in
-                            switch phase {
-                            case .empty:
-                                Rectangle().fill(Color.gray.opacity(0.1)).overlay(ProgressView())
-                            case .success(let image):
-                                image.resizable().aspectRatio(contentMode: .fill)
-                            case .failure:
-                                Rectangle().fill(Color.gray.opacity(0.2)).overlay(Image(systemName: "photo"))
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
-                    }
-                }
-                .tabViewStyle(.page)
-                .frame(height: 300)
-                .clipped()
-                
-                VStack(alignment: .leading, spacing: 24) {
-                    // Header Section
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack(alignment: .top) {
-                            Text(recipe.title)
-                                .font(.system(.title2, design: .rounded, weight: .black))
-                                .fixedSize(horizontal: false, vertical: true)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Button(action: { 
-                                withAnimation(.spring()) {
-                                    hubViewModel.toggleSavedRecipe(recipe.id)
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    // Image Header Carousel
+                    TabView {
+                        ForEach(recipe.imageUrls, id: \.self) { imageUrl in
+                            AsyncImage(url: URL(string: imageUrl)) { phase in
+                                switch phase {
+                                case .empty:
+                                    Rectangle().fill(Color.gray.opacity(0.1)).overlay(ProgressView())
+                                case .success(let image):
+                                    image.resizable().aspectRatio(contentMode: .fill)
+                                case .failure:
+                                    Rectangle().fill(Color.gray.opacity(0.2)).overlay(Image(systemName: "photo"))
+                                @unknown default:
+                                    EmptyView()
                                 }
-                            }) {
-                                Image(systemName: hubViewModel.isRecipeSaved(recipe.id) ? "bookmark.fill" : "bookmark")
-                                    .font(.title3)
-                                    .foregroundStyle(.orange)
-                                    .padding(10)
-                                    .background(.orange.opacity(0.1))
-                                    .clipShape(Circle())
-                            }
-                        }
-                        
-                        if let vendor = marketplaceViewModel.vendors.first(where: { $0.id == recipe.vendorId }) {
-                            NavigationLink {
-                                VendorDetailView(vendor: vendor)
-                            } label: {
-                                HStack {
-                                    Image(systemName: "storefront.fill")
-                                    Text("From \(vendor.name)")
-                                        .fontWeight(.bold)
-                                }
-                                .font(.subheadline)
-                                .foregroundStyle(.orange)
-                                .padding(.vertical, 4)
-                            }
-                        } else {
-                            Text("by \(recipe.author)")
-                                .foregroundStyle(.secondary)
-                                .font(.subheadline)
-                        }
-                    }
-                    
-                    Text(recipe.description)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(nil)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    // Ingredients
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Ingredients")
-                            .font(.headline)
-                        
-                        ForEach(recipe.ingredients) { ingredient in
-                            IngredientRow(ingredient: ingredient) {
-                                marketplaceViewModel.addToCart(ingredient: ingredient)
                             }
                         }
                     }
+                    .tabViewStyle(.page)
+                    .frame(height: 300)
+                    .clipped()
                     
-                    // Instructions
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Cooking Steps")
-                            .font(.headline)
-                        
-                        ForEach(Array(recipe.instructions.enumerated()), id: \.offset) { index, instruction in
-                            HStack(alignment: .top, spacing: 12) {
-                                Text("\(index + 1)")
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .frame(width: 24, height: 24)
-                                    .background(.orange.gradient)
-                                    .clipShape(Circle())
-                                
-                                Text(instruction)
-                                    .font(.subheadline)
+                    VStack(alignment: .leading, spacing: 24) {
+                        // Header Section
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack(alignment: .top) {
+                                Text(recipe.title)
+                                    .font(.system(.title2, design: .rounded, weight: .black))
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .lineLimit(nil)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                Button(action: { 
+                                    withAnimation(.spring()) {
+                                        hubViewModel.toggleSavedRecipe(recipe.id)
+                                    }
+                                }) {
+                                    Image(systemName: hubViewModel.isRecipeSaved(recipe.id) ? "bookmark.fill" : "bookmark")
+                                        .font(.title3)
+                                        .foregroundStyle(.orange)
+                                        .padding(10)
+                                        .background(.orange.opacity(0.1))
+                                        .clipShape(Circle())
+                                }
                             }
-                        }
-                    }
-                    
-                    Divider().padding(.vertical, 8)
-                    
-                    // Comments
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Community Reviews (\(recipe.comments.count))")
-                            .font(.headline)
-                        
-                        HStack {
-                            TextField("Share your thoughts...", text: $newComment)
-                                .font(.subheadline)
-                                .padding(10)
-                                .background(Color(.secondarySystemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
                             
-                            Button("Post") {
-                                newComment = ""
+                            if let vendor = marketplaceViewModel.vendors.first(where: { $0.id == recipe.vendorId }) {
+                                NavigationLink {
+                                    VendorDetailView(vendor: vendor)
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "storefront.fill")
+                                        Text("From \(vendor.name)")
+                                            .fontWeight(.bold)
+                                    }
+                                    .font(.subheadline)
+                                    .foregroundStyle(.orange)
+                                    .padding(.vertical, 4)
+                                }
+                            } else {
+                                Text("by \(recipe.author)")
+                                    .foregroundStyle(.secondary)
+                                    .font(.subheadline)
                             }
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.orange)
                         }
                         
-                        ForEach(recipe.comments) { comment in
-                            CommentView(comment: comment)
+                        Text(recipe.description)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(nil)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        // Ingredients
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Ingredients")
+                                .font(.headline)
+                            
+                            ForEach(recipe.ingredients) { ingredient in
+                                IngredientRow(ingredient: ingredient) {
+                                    marketplaceViewModel.addToCart(ingredient: ingredient)
+                                }
+                            }
+                        }
+                        
+                        // Instructions
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Cooking Steps")
+                                .font(.headline)
+                            
+                            ForEach(Array(recipe.instructions.enumerated()), id: \.offset) { index, instruction in
+                                HStack(alignment: .top, spacing: 12) {
+                                    Text("\(index + 1)")
+                                        .font(.caption)
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 24, height: 24)
+                                        .background(.orange.gradient)
+                                        .clipShape(Circle())
+                                    
+                                    Text(instruction)
+                                        .font(.subheadline)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .lineLimit(nil)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                        }
+                        
+                        Divider().padding(.vertical, 8)
+                        
+                        // Comments
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Community Reviews (\(recipe.comments.count))")
+                                .font(.headline)
+                            
+                            HStack {
+                                TextField("Share your thoughts...", text: $newComment)
+                                    .font(.subheadline)
+                                    .padding(10)
+                                    .background(Color(.secondarySystemBackground))
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                                Button("Post") {
+                                    newComment = ""
+                                }
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.orange)
+                            }
+                            
+                            ForEach(recipe.comments) { comment in
+                                CommentView(comment: comment)
+                            }
                         }
                     }
+                    .padding(16)
+                    .padding(.bottom, 100) // Space for floating button
                 }
-                .padding(16)
-                .padding(.bottom, 40)
             }
+            
+            FloatingCartButton(viewModel: marketplaceViewModel)
+                .padding(.bottom, 20)
         }
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea(edges: .top)

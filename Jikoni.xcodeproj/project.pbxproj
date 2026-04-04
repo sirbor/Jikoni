@@ -24,8 +24,10 @@
 		75F70F5820C8BE2660D2B36B /* VendorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F15E163ADE1874B7D1B98E /* VendorCard.swift */; };
 		77ACA53C320F601AD96390C0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */; };
 		78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */; };
+		790DB74684AA968C9CAE23E5 /* DrinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA07E9D5B610FFD92539945 /* DrinksView.swift */; };
 		7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C12598556F36378A95B8A6 /* SettingsView.swift */; };
 		7FF92D1F48942C0820CB0A79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */; };
+		836156CA7D8F126DA1B2F61D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9A4C074B5177E046B6B15C /* EditProfileView.swift */; };
 		8986B39444CB2B8B6E98D287 /* MockAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */; };
 		90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215437803622EAB89C95976 /* CartAndWishlistView.swift */; };
 		94B07C616D10C20DD83BFBFE /* JikoniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E556A53F6D825A56E33EAB /* JikoniApp.swift */; };
@@ -39,6 +41,7 @@
 		B65AB9FB93ADDE9BDF6E8B40 /* TrackingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */; };
 		BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85642CC2D42F7E899E2DD350 /* ExploreView.swift */; };
 		BEDD549D15C1AE40FA4386A5 /* MockOrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92DB90E0099743977688439 /* MockOrderRepository.swift */; };
+		C7E18DBAB5B9D21F884A3DB1 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816283CCD6539B8DADE44D0 /* AddReviewView.swift */; };
 		C89A90658C32B827373FB9A5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C7468996B81C4E6F54EF3 /* Order.swift */; };
 		CCB660615E8BEDEE2DF214C9 /* SupportCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E141335D60E262DB088547A /* SupportCenterView.swift */; };
 		CCBFCF8713FA5C40A5A16517 /* JikoniLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */; };
@@ -52,6 +55,8 @@
 		E7852EF20EDE465E73A5ECFC /* VendorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362936C16AD4947837735FB /* VendorDetailView.swift */; };
 		E860B75DFCEC47E7E7D3B203 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34709767C108C4326F1684A2 /* Vendor.swift */; };
 		ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D2E90B54BF153E59CE5043 /* RewardsView.swift */; };
+		FA7EB0362E8F499BF1FB1E0D /* FloatingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */; };
+		FBE09F0850965AD30920B596 /* ReviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B61F24103C62DDEB5C17DF /* ReviewCard.swift */; };
 		FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +76,10 @@
 		43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecipeRepository.swift; sourceTree = "<group>"; };
 		46371B77C63E93C5D2D58420 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniLogo.swift; sourceTree = "<group>"; };
-		52F4734890A351B03C9878F9 /* Jikoni.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Jikoni.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52F4734890A351B03C9878F9 /* Jikoni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jikoni.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AA07E9D5B610FFD92539945 /* DrinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksView.swift; sourceTree = "<group>"; };
 		62FF90E956B49831326AE0A2 /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
+		6816283CCD6539B8DADE44D0 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
 		74C12598556F36378A95B8A6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		74E556A53F6D825A56E33EAB /* JikoniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniApp.swift; sourceTree = "<group>"; };
@@ -83,15 +90,18 @@
 		88612EEC295C86617B204F05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniButton.swift; sourceTree = "<group>"; };
 		9362936C16AD4947837735FB /* VendorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailView.swift; sourceTree = "<group>"; };
+		94B61F24103C62DDEB5C17DF /* ReviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCard.swift; sourceTree = "<group>"; };
 		A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
 		A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthRepository.swift; sourceTree = "<group>"; };
 		A92DB90E0099743977688439 /* MockOrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderRepository.swift; sourceTree = "<group>"; };
 		B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		BAF2A8FC038476316C17E50A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		BD9A4C074B5177E046B6B15C /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		C00F476A37165017187BBE13 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C215437803622EAB89C95976 /* CartAndWishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAndWishlistView.swift; sourceTree = "<group>"; };
 		CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVendorRepository.swift; sourceTree = "<group>"; };
+		D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCartButton.swift; sourceTree = "<group>"; };
 		D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D77C7468996B81C4E6F54EF3 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D97EF183D153C40053C3C00A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -105,6 +115,14 @@
 		FC130C9F966913B81EA87E13 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		15BBF45D2F81548E00FFB835 /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXGroup section */
 		126AD26A979F54F11FBF395F /* Models */ = {
@@ -168,6 +186,7 @@
 		7CF940F65DB48A83060C365F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				BD9A4C074B5177E046B6B15C /* EditProfileView.swift */,
 				88612EEC295C86617B204F05 /* ProfileView.swift */,
 			);
 			path = Profile;
@@ -203,11 +222,14 @@
 		BD5F6F219269AFDE75520860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6816283CCD6539B8DADE44D0 /* AddReviewView.swift */,
+				D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */,
 				62FF90E956B49831326AE0A2 /* IngredientRow.swift */,
 				8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */,
 				4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */,
 				FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */,
 				23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */,
+				94B61F24103C62DDEB5C17DF /* ReviewCard.swift */,
 				25F15E163ADE1874B7D1B98E /* VendorCard.swift */,
 			);
 			path = Components;
@@ -268,6 +290,7 @@
 			children = (
 				C215437803622EAB89C95976 /* CartAndWishlistView.swift */,
 				F126569B1E28B771DA3D32DB /* CartView.swift */,
+				5AA07E9D5B610FFD92539945 /* DrinksView.swift */,
 				85642CC2D42F7E899E2DD350 /* ExploreView.swift */,
 				7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */,
 				9362936C16AD4947837735FB /* VendorDetailView.swift */,
@@ -278,6 +301,7 @@
 		FD576B65B39EB2B9000D469D /* Jikoni */ = {
 			isa = PBXGroup;
 			children = (
+				15BBF45D2F81548E00FFB835 /* Screenshots */,
 				FA3E2F6796126DAAAB596D9B /* Assets.xcassets */,
 				3EEEBD3F130519BB20FA8903 /* Info.plist */,
 				74E556A53F6D825A56E33EAB /* JikoniApp.swift */,
@@ -303,6 +327,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				15BBF45D2F81548E00FFB835 /* Screenshots */,
+			);
 			name = Jikoni;
 			packageProductDependencies = (
 			);
@@ -319,6 +346,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					6B8A7FCA14FA7DB8B4A4EC98 = {
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = F73D70B876D5C89601E417D2 /* Build configuration list for PBXProject "Jikoni" */;
@@ -356,13 +386,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E18DBAB5B9D21F884A3DB1 /* AddReviewView.swift in Sources */,
 				2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */,
 				05335FE47518014B804D5353 /* AuthRepository.swift in Sources */,
 				90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */,
 				291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */,
+				790DB74684AA968C9CAE23E5 /* DrinksView.swift in Sources */,
+				836156CA7D8F126DA1B2F61D /* EditProfileView.swift in Sources */,
 				BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */,
 				A85BC2084A93217F1DB1CBF5 /* FeedView.swift in Sources */,
 				94B9CDD18209AB787B49A10F /* FeedViewModel.swift in Sources */,
+				FA7EB0362E8F499BF1FB1E0D /* FloatingCartButton.swift in Sources */,
 				FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */,
 				9C7C55A8FBEB687F3C068ACE /* Ingredient.swift in Sources */,
 				4BB70363F672661F43555C70 /* IngredientRow.swift in Sources */,
@@ -389,6 +423,7 @@
 				B585374214EF07A4EC90F959 /* RecipeRepository.swift in Sources */,
 				78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */,
 				209C13890A0C4251E708CCAB /* Review.swift in Sources */,
+				FBE09F0850965AD30920B596 /* ReviewCard.swift in Sources */,
 				ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */,
 				29C31591433857EAD662F7E0 /* SavedRecipesView.swift in Sources */,
 				7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */,
@@ -475,6 +510,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FA6S4RKQ23;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Jikoni/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -494,6 +531,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FA6S4RKQ23;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Jikoni/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

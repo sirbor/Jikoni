@@ -66,9 +66,9 @@ struct JikoniApp: App {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
             
-            CartAndWishlistView(marketplaceViewModel: marketplaceViewModel)
+            DrinksView(viewModel: marketplaceViewModel)
                 .tabItem {
-                    Label("Cart", systemImage: "cart.fill")
+                    Label("Drinks", systemImage: "wineglass.fill")
                 }
             
             HubView(viewModel: hubViewModel)

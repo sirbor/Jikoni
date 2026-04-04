@@ -11,8 +11,6 @@ struct LoginView: View {
             VStack(spacing: 30) {
                 Spacer()
                 
-                JikoniLogo(size: 80, showText: false)
-                
                 VStack(spacing: 8) {
                     Text("Jikoni")
                         .font(.system(size: 40, weight: .black, design: .rounded))

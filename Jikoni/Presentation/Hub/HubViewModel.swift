@@ -97,6 +97,15 @@ class HubViewModel {
     }
     
     @MainActor
+    func updateProfile(_ user: User) async {
+        do {
+            try await authRepository.updateUser(user)
+        } catch {
+            print("Error updating profile: \(error)")
+        }
+    }
+    
+    @MainActor
     func toggleSavedRecipe(_ recipeId: String) {
         guard var user = currentUser else { return }
         if user.cookbookIds.contains(recipeId) {

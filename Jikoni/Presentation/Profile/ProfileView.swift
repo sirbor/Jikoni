@@ -9,20 +9,43 @@ struct ProfileView: View {
             List {
                 Section {
                     HStack(spacing: 16) {
-                        Circle()
-                            .fill(.orange.gradient)
-                            .frame(width: 60, height: 60)
-                            .overlay {
-                                Image(systemName: "person.fill")
-                                    .foregroundStyle(.white)
+                        if let imageUrl = user.profileImageUrl, !imageUrl.isEmpty {
+                            AsyncImage(url: URL(string: imageUrl)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            } placeholder: {
+                                Circle().fill(Color.gray.opacity(0.1))
                             }
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color(hex: "D4AF37"), lineWidth: 2))
+                        } else {
+                            Circle()
+                                .fill(.black)
+                                .frame(width: 70, height: 70)
+                                .overlay {
+                                    Image(systemName: "person.fill")
+                                        .foregroundStyle(Color(hex: "D4AF37"))
+                                        .font(.system(size: 30))
+                                }
+                                .overlay(Circle().stroke(Color(hex: "D4AF37"), lineWidth: 2))
+                        }
                         
                         VStack(alignment: .leading, spacing: 4) {
                             Text(user.displayName ?? "Chef")
-                                .font(.headline)
+                                .font(.custom("Georgia-Bold", size: 20))
                             Text(user.skillLevel)
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: EditProfileView()) {
+                            Image(systemName: "pencil.circle.fill")
+                                .font(.title2)
+                                .foregroundStyle(Color(hex: "D4AF37"))
                         }
                     }
                     .padding(.vertical, 8)
@@ -32,6 +55,11 @@ struct ProfileView: View {
                     NavigationLink(destination: SavedRecipesView()) {
                         Label("Digital Cookbook", systemImage: "book.fill")
                     }
+                    
+                    NavigationLink(destination: SavedRecipesView()) {
+                        Label("My Wishlist", systemImage: "heart.fill")
+                    }
+                    
                     NavigationLink(destination: OrderHistoryView(viewModel: hubViewModel)) {
                         Label("Order History", systemImage: "clock.fill")
                     }
@@ -63,9 +91,4 @@ struct ProfileView: View {
             .navigationTitle("Profile")
         }
     }
-}
-
-#Preview {
-    ProfileView(user: User(id: "1", displayName: "Chef Jikoni", skillLevel: "Master Chef", dietaryGoals: ["Keto"], loyaltyPoints: 100, cookbookIds: [], followersCount: 0, followingCount: 0, recipesCount: 0, averageRating: 5.0, reviews: []))
-        .environment(HubViewModel(authRepository: MockAuthRepository(), orderRepository: MockOrderRepository()))
 }

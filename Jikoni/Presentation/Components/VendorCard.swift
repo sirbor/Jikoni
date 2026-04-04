@@ -5,66 +5,71 @@ struct VendorCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AsyncImage(url: URL(string: vendor.imageUrls.first ?? "")) { phase in
-                switch phase {
-                case .empty:
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.1))
-                        .overlay(ProgressView())
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                case .failure:
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.2))
-                        .overlay(Image(systemName: "photo").foregroundStyle(.secondary))
-                @unknown default:
-                    EmptyView()
+            ZStack(alignment: .topTrailing) {
+                // Rectangular Image Holder
+                AsyncImage(url: URL(string: vendor.imageUrls.first ?? "")) { phase in
+                    switch phase {
+                    case .empty:
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .overlay(ProgressView())
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    case .failure:
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.2))
+                            .overlay(Image(systemName: "photo").foregroundStyle(.secondary))
+                    @unknown default:
+                        EmptyView()
+                    }
                 }
+                .frame(height: 100)
+                .clipped()
+                
+                // Rating Overlay
+                HStack(spacing: 2) {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(Color(hex: "D4AF37"))
+                        .font(.system(size: 8))
+                    Text(String(format: "%.1f", vendor.rating))
+                        .font(.system(size: 10, weight: .bold))
+                }
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(.ultraThinMaterial)
+                .clipShape(Capsule())
+                .padding(6)
             }
-            .frame(height: 100)
-            .clipped()
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(vendor.name)
-                    .font(.system(size: 13, weight: .bold))
+                    .font(.custom("Georgia-Bold", size: 13))
+                    .foregroundStyle(.primary)
                     .lineLimit(1)
                 
-                HStack(spacing: 2) {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .font(.system(size: 9))
-                    Text(String(format: "%.1f", vendor.rating))
-                        .font(.system(size: 11, weight: .medium))
+                HStack {
+                    Text(vendor.cuisine)
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundColor(Color(hex: "CFB53B"))
                     
-                    Text("•")
-                        .font(.system(size: 11))
-                        .foregroundColor(.secondary)
+                    Spacer()
                     
-                    Text("$\(vendor.deliveryFee.formatted())")
-                        .font(.system(size: 11))
+                    Label("$\(vendor.deliveryFee.formatted())", systemImage: "bicycle")
+                        .font(.system(size: 9, weight: .medium))
                         .foregroundColor(.secondary)
-                }
-                
-                if let inventory = vendor.inventory, !inventory.isEmpty {
-                    Text(inventory.keys.joined(separator: ", "))
-                        .font(.system(size: 9))
-                        .foregroundColor(.orange)
-                        .lineLimit(1)
-                } else {
-                    Text("Local Restaurant")
-                        .font(.system(size: 9))
-                        .foregroundColor(.secondary)
-                        .lineLimit(1)
                 }
             }
             .padding(8)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(.ultraThinMaterial)
         }
-        .frame(height: 160)
-        .clipShape(RoundedRectangle(cornerRadius: 15))
+        .frame(width: 150)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(hex: "D4AF37").opacity(0.2), lineWidth: 0.5)
+        )
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
 }

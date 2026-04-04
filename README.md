@@ -1,71 +1,78 @@
 # Jikoni (iOS)
 
-**Jikoni** (Swahili for "Kitchen") is a high-fidelity iOS application designed to bridge the gap between home-cooked inspiration and local commerce. It serves as a circular food economy platform where users can discover artisanal recipes from around the world, instantly source ingredients from local vendors, and track their deliveries in real-time.
+**Jikoni** (Swahili for "Kitchen") is a high-fidelity iOS application designed to bridge the gap between home-cooked inspiration and local luxury commerce. It serves as a premium food economy platform where users can discover global recipes, order artisanal ingredients, and track deliveries through upscale districts.
+
+<p align="center">
+  <img src="Screenshots/WELCOME.png" width="200" />
+  <img src="Screenshots/DISCOVER.png" width="200" />
+  <img src="Screenshots/EXPLORE.png" width="200" />
+</p>
+
+## ✨ Key Features
+
+### 🌍 Global Culinary Catalog
+Discover 30 unique global cuisines, from **Spicy Kung Pao** and **Turkish Adana Kebab** to **Egyptian Koshary**. Each recipe is showcased with high-resolution imagery and detailed cooking instructions.
+<p align="center">
+  <img src="Screenshots/DISHES.png" width="250" />
+</p>
+
+### 🍸 Premium Drinks Ecosystem
+A dedicated bar experience featuring artisanal **Cocktails, Mocktails, Milkshakes, and Caffeinated brews**. Browse the local "Drinks" marketplace with situational floating cart access.
+<p align="center">
+  <img src="Screenshots/DRINKS.png" width="250" />
+  <img src="Screenshots/DRINKS2.png" width="250" />
+</p>
+
+### 📍 Posh District Marketplace
+Shop from 30 boutique vendors strategically located in upscale districts including **Muthaiga, Runda, Westlands, Lavington, and Karen**.
+<p align="center">
+  <img src="Screenshots/RESTAURANT.png" width="250" />
+  <img src="Screenshots/MAPS.png" width="250" />
+</p>
+
+### 🚚 High-Fidelity Delivery Tracking
+Experience realistic real-time tracking. Our delivery simulation follows multi-node routes through premium neighborhoods, ensuring you see the exact path of your order.
+<p align="center">
+  <img src="Screenshots/CHECKOUT.png" width="250" />
+</p>
+
+### 👤 Personalized Kitchen Hub
+Manage your identity with profile editing, view your **Order History**, and access your **Digital Cookbook** and **Wishlist** all in one place.
+<p align="center">
+  <img src="Screenshots/PROFILE.png" width="200" />
+  <img src="Screenshots/ORDER_HISTORY.png" width="200" />
+  <img src="Screenshots/SETTINGS.png" width="200" />
+</p>
+
+## 🎨 Design Philosophy
+*   **Premium Gold Aesthetic:** A unified luxury theme using gold gradients, brass accents, and the **Georgia-Bold** serif font.
+*   **Glassmorphism:** Extensive use of `ultraThinMaterial` for modern, immersive UI components.
+*   **Situational UX:** A decentralized floating cart that appears only when you need it, ensuring a clutter-free browsing experience.
+
+## 🛠 Technical Stack
+*   **Language:** Swift 5.10
+*   **Framework:** SwiftUI (Observation Framework)
+*   **Architecture:** Clean Architecture (Domain, Data, Presentation)
+*   **Project Management:** [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+*   **Maps:** MapKit with realistic route simulation logic.
+
+## 🚀 Getting Started
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/sirbor/Jikoni.git
+    ```
+2.  **Generate the Project:**
+    Ensure you have `xcodegen` installed, then run:
+    ```bash
+    xcodegen generate
+    ```
+3.  **Open in Xcode:**
+    ```bash
+    open Jikoni.xcodeproj
+    ```
+4.  **Run:** Select an iPhone 15/16/17 Simulator or a physical device and press `Cmd + R`.
 
 ---
 
-## The Concept: "RecipeDash"
-Jikoni is a hybrid of a social recipe community (like Cookpad) and a high-efficiency delivery marketplace (like DoorDash). 
-
-1.  **Discover**: Find authentic recipes (Carbonara, Ramen, Adana Kebab, etc.).
-2.  **Shop**: One-tap addition of ingredients to a unified, multi-vendor cart.
-3.  **Create**: Follow step-by-step instructions optimized for mobile viewing.
-4.  **Track**: Watch your ingredients arrive with live MapKit-powered delivery tracking.
-
----
-
-##  Key Features
-
-### 1. Recipe Feed
-*   **Global Catalog**: Over 20+ artisanal cuisines including Mediterranean, Turkish, Georgian, Chinese, and Italian.
-*   **High-Res Imagery**: Immersive visuals powered by Unsplash.
-*   **Interactive Details**: Perfectly fitted recipe layouts with wrapped text, difficulty ratings, and cook times.
-*   **Threaded Conversations**: A community review system for sharing culinary tips.
-
-### 2. Marketplace & Vendor Network
-*   **30+ Local Partners**: A directory of specialty butchers, organic supermarkets, spice markets, and flea markets.
-*   **Cuisine Matching**: Intelligent linking between recipe ingredients and local shops specializing in those items.
-*   **Smart Grid**: A responsive, non-overlapping vendor exploration layout with Map/Grid toggles.
-
-### 3. Unified Commerce & Wishlist
-*   **Consolidated Hub**: A single tab managing both your active **Shopping Cart** and your **Digital Cookbook** (Wishlist).
-*   **Multi-Vendor Checkout**: Grouped items by store with automated delivery fee calculations.
-*   **Seamless Ordering**: A frictionless flow from recipe discovery to payment.
-
-### 4. Logistics & Live Tracking
-*   **Adaptive Overlay**: A minimized tracking widget that only appears when an order is active.
-*   **Live MapKit Integration**: Real-time courier movement simulation and order lifecycle management (Placed → Delivering → Completed).
-
----
-
-## Tech Stack
-
-*   **UI Framework**: SwiftUI (Targeting iOS 17.0+)
-*   **Architecture**: Clean Architecture (Domain, Data, Presentation) + MVVM
-*   **State Management**: Native `@Observable` framework (Observation)
-*   **Concurrency**: Swift Structured Concurrency (`async/await`, `Tasks`)
-*   **Database**: SwiftData (Architected for local recipe drafts and archiving)
-*   **Maps**: MapKit (iOS 17 `Map` API)
-*   **Networking**: Generic `NetworkManager` wrapper for `URLSession`
-*   **Design System**: "Rich Aesthetic" featuring `ultraThinMaterial`, custom gradients, and 20pt+ corner radiuses.
-*   **Persistence**: `@AppStorage` for user preferences (Dark Mode, Language).
-
----
-
-##  Design Philosophy
-Jikoni is built for the modern user who values both aesthetics and performance:
-*   **Dark Mode Ready**: Full support for system-wide appearance changes using dynamic semantic colors.
-*   **Page-Fitted Content**: Zero text overlap ensures recipes are readable even on smaller devices.
-*   **Snappy UX**: Optimized mock repositories with ultra-low latency for an "instant" app feel.
-
----
-
-##  Getting Started
-
-1.  **Generate Project**: `xcodegen generate`
-2.  **Open in Xcode**: `open Jikoni.xcodeproj`
-3.  **Run**: Select an iPhone 15/16 Simulator and press `Cmd + R`.
-
----
-
-*Developed by the Dominic Bor.*
+*Developed by Dominic Bor.*

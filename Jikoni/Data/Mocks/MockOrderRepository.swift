@@ -7,21 +7,27 @@ class MockOrderRepository: OrderRepository {
     private var orderContinuations: [UUID: AsyncStream<[Order]>.Continuation] = [:]
     private var activeOrderContinuations: [UUID: AsyncStream<Order?>.Continuation] = [:]
     
-    // Default destination (user location simulation - Central Nairobi)
-    private let userLocation = Location(latitude: -1.2921, longitude: 36.8219)
-    // Start location for rider (Westlands area)
-    private let riderStartLocation = Location(latitude: -1.2661, longitude: 36.8049)
+    // User location (Central Posh Area - Lavington)
+    private let userLocation = Location(latitude: -1.2724, longitude: 36.7723)
+    
+    // Detailed multi-district route waypoints
+    private let deliveryRoute: [Location] = [
+        Location(latitude: -1.2524, longitude: 36.8223), // 1. Muthaiga (Pickup Start)
+        Location(latitude: -1.2224, longitude: 36.8123), // 2. Runda
+        Location(latitude: -1.2619, longitude: 36.8049), // 3. Westlands
+        Location(latitude: -1.3324, longitude: 36.7123), // 4. Karen
+        Location(latitude: -1.2724, longitude: 36.7723)  // 5. Lavington (User Home)
+    ]
     
     func placeOrder(_ order: Order) async throws {
         var newOrder = order
         newOrder.destinationLocation = userLocation
-        newOrder.courierLocation = riderStartLocation
+        newOrder.courierLocation = deliveryRoute.first
         orders.append(newOrder)
         activeOrder = newOrder
         notifyOrders()
         notifyActiveOrder()
         
-        // Start detailed simulation
         startSimulation(for: newOrder.id)
     }
     
@@ -53,30 +59,34 @@ class MockOrderRepository: OrderRepository {
     
     private func startSimulation(for orderId: String) {
         Task {
-            // 1. Preparing (5 seconds)
-            try? await Task.sleep(nanoseconds: 5_000_000_000)
+            // 1. Preparing
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
             updateOrderStatus(id: orderId, status: .preparing)
             
-            // 2. Picked Up (5 seconds)
-            try? await Task.sleep(nanoseconds: 5_000_000_000)
+            // 2. Picked Up
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
             updateOrderStatus(id: orderId, status: .pickedUp)
             
-            // 3. Delivering + Movement (Approx 4.5 minutes)
+            // 3. Delivering + Movement through 5 Posh Districts
             updateOrderStatus(id: orderId, status: .delivering)
             
-            let steps = 135 // 135 steps, 2 seconds each = 270 seconds (4.5 mins)
-            for i in 1...steps {
-                try? await Task.sleep(nanoseconds: 2_000_000_000)
-                let progress = Double(i) / Double(steps)
+            for nodeIndex in 0..<(deliveryRoute.count - 1) {
+                let startNode = deliveryRoute[nodeIndex]
+                let endNode = deliveryRoute[nodeIndex + 1]
                 
-                let lat = riderStartLocation.latitude + (userLocation.latitude - riderStartLocation.latitude) * progress
-                let lon = riderStartLocation.longitude + (userLocation.longitude - riderStartLocation.longitude) * progress
-                
-                updateOrderLocation(id: orderId, lat: lat, lon: lon)
+                let steps = 40 // More steps for smoother movement
+                for i in 1...steps {
+                    try? await Task.sleep(nanoseconds: 800_000_000) // Slightly faster updates
+                    let progress = Double(i) / Double(steps)
+                    
+                    let lat = startNode.latitude + (endNode.latitude - startNode.latitude) * progress
+                    let lon = startNode.longitude + (endNode.longitude - startNode.longitude) * progress
+                    
+                    updateOrderLocation(id: orderId, lat: lat, lon: lon)
+                }
             }
             
             // 4. Completed
-            try? await Task.sleep(nanoseconds: 2_000_000_000)
             updateOrderStatus(id: orderId, status: .completed)
             activeOrder = nil
             notifyActiveOrder()

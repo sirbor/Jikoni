@@ -11,48 +11,38 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .bottom) {
                 if viewModel.isMapView {
                     vendorMap
                 } else {
                     vendorGrid
                 }
+                
+                FloatingCartButton(viewModel: viewModel)
+                    .padding(.bottom, 20)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 12) {
-                        JikoniLogo(size: 30, showText: false)
-                        Text("Explore")
-                            .font(.headline)
-                    }
+                    Text("Explore")
+                        .font(.custom("Georgia-Bold", size: 24))
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        withAnimation(.spring()) { viewModel.isMapView.toggle() }
-                    } label: {
-                        Image(systemName: viewModel.isMapView ? "square.grid.2x2.fill" : "map.fill")
-                            .foregroundStyle(.orange)
-                    }
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: CartView(viewModel: viewModel)) {
-                        ZStack(alignment: .topTrailing) {
-                            Image(systemName: "cart.fill")
-                                .font(.title3)
-                                .foregroundStyle(.orange)
-                            
-                            if !viewModel.cart.isEmpty {
-                                Text("\(viewModel.cart.values.reduce(0, +))")
-                                    .font(.system(size: 10, weight: .bold))
-                                    .padding(4)
-                                    .background(.red)
-                                    .foregroundColor(.white)
-                                    .clipShape(Circle())
-                                    .offset(x: 10, y: -10)
-                            }
+                        withAnimation(.spring(response: 0.45, dampingFraction: 0.7)) {
+                            viewModel.isMapView.toggle()
                         }
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: viewModel.isMapView ? "square.grid.2x2.fill" : "map.fill")
+                            Text(viewModel.isMapView ? "Grid" : "Map")
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color(hex: "D4AF37").opacity(0.1))
+                        .foregroundStyle(Color(hex: "D4AF37"))
+                        .clipShape(Capsule())
                     }
                 }
             }
@@ -86,18 +76,24 @@ struct ExploreView: View {
         Map {
             ForEach(viewModel.vendors) { vendor in
                 Annotation(vendor.name, coordinate: CLLocationCoordinate2D(latitude: vendor.location.latitude, longitude: vendor.location.longitude)) {
-                    VStack {
-                        Image(systemName: "storefront.fill")
-                            .padding(8)
-                            .background(.orange)
-                            .foregroundColor(.white)
-                            .clipShape(Circle())
-                        
-                        Text(vendor.name)
-                            .font(.caption2)
-                            .padding(4)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(4)
+                    NavigationLink {
+                        VendorDetailView(vendor: vendor)
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image(systemName: "fork.knife.circle.fill")
+                                .font(.title)
+                                .foregroundStyle(Color(hex: "D4AF37"))
+                                .background(.black)
+                                .clipShape(Circle())
+                                .shadow(radius: 2)
+                            
+                            Text(vendor.name)
+                                .font(.system(size: 10, weight: .bold))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(.ultraThinMaterial)
+                                .clipShape(Capsule())
+                        }
                     }
                 }
             }
