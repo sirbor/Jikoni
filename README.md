@@ -1,10 +1,10 @@
-# Jikoni (iOS)
+# Jikoni
 
-**Jikoni** (Swahili for "Kitchen") is a high-fidelity iOS application designed to bridge the gap between home-cooked inspiration and local luxury commerce. It serves as a premium food economy platform where users can discover global recipes, order artisanal ingredients, and track deliveries through upscale districts.
+**Jikoni** is a high-fidelity iOS application designed to bridge the gap between home-cooked inspiration and local luxury commerce. It serves as a premium food economy platform where users can discover global recipes, order artisanal ingredients, and track deliveries through upscale districts.
 
 ## Key Features
 
-### User Onboarding and Home Discovery
+### Sign Up, Home Page and Restaurants
 New users are onboarded quickly, then guided into a curated home feed and nearby restaurant discovery flow.
 <p align="center">
   <img src="Jikoni/Screenshots/Sign%20up.png" width="240" />
@@ -12,7 +12,7 @@ New users are onboarded quickly, then guided into a curated home feed and nearby
   <img src="Jikoni/Screenshots/Restaurants%20List.png" width="240" />
 </p>
 
-### Restaurant Conversion Funnel
+### Restaurant Info
 Restaurant pages are structured for conversion with clear information, trust-building reviews, and menu-first browsing.
 <p align="center">
   <img src="Jikoni/Screenshots/Restaurant%20Menu.png" width="240" />
@@ -20,7 +20,7 @@ Restaurant pages are structured for conversion with clear information, trust-bui
   <img src="Jikoni/Screenshots/Restaurant%20Info.png" width="240" />
 </p>
 
-### Menu and Beverage Browsing
+### Menus
 Users can move from high-level meal browsing into dish-level detail and a dedicated drinks experience.
 <p align="center">
   <img src="Jikoni/Screenshots/Dish.png" width="240" />
@@ -28,7 +28,7 @@ Users can move from high-level meal browsing into dish-level detail and a dedica
   <img src="Jikoni/Screenshots/Restaurant%20Meals.png" width="240" />
 </p>
 
-### Checkout, Tracking, and Order Lifecycle
+### Ordering
 The purchase journey is continuous from cart confirmation through live tracking and historical order records.
 <p align="center">
   <img src="Jikoni/Screenshots/Restaurant%20Cart.png" width="240" />
@@ -36,7 +36,7 @@ The purchase journey is continuous from cart confirmation through live tracking 
   <img src="Jikoni/Screenshots/ORDER%20HISTORY.PNG" width="240" />
 </p>
 
-### Personalization and Re-engagement
+### Customer Retention
 Saved preferences and favorites create a faster repeat-order loop and stronger retention behavior.
 <p align="center">
   <img src="Jikoni/Screenshots/PROFILE.PNG" width="240" />
@@ -44,7 +44,7 @@ Saved preferences and favorites create a faster repeat-order loop and stronger r
   <img src="Jikoni/Screenshots/Wishlist.png" width="240" />
 </p>
 
-### Account and Preference Controls
+### Settings
 Users can manage payment, profile, and app-level settings from a centralized control experience.
 <p align="center">
   <img src="Jikoni/Screenshots/Payment%20settings.png" width="240" />
