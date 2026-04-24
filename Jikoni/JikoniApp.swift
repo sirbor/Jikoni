@@ -58,17 +58,17 @@ struct JikoniApp: App {
         TabView {
             FeedView(viewModel: feedViewModel)
                 .tabItem {
-                    Label("Discovery", systemImage: "house.fill")
+                    Label("Home", systemImage: "house.fill")
                 }
             
             ExploreView(viewModel: marketplaceViewModel)
                 .tabItem {
-                    Label("Explore", systemImage: "magnifyingglass")
+                    Label("Delivery", systemImage: "scooter")
                 }
             
             DrinksView(viewModel: marketplaceViewModel)
                 .tabItem {
-                    Label("Drinks", systemImage: "wineglass.fill")
+                    Label("Beverages", systemImage: "wineglass.fill")
                 }
             
             HubView(viewModel: hubViewModel)
@@ -76,7 +76,7 @@ struct JikoniApp: App {
                     Label("Profile", systemImage: "person.fill")
                 }
         }
-        .accentColor(.orange)
+        .tint(Color(hex: "D4AF37"))
         .environment(hubViewModel)
         .environment(marketplaceViewModel)
         .environment(feedViewModel)
@@ -88,19 +88,15 @@ struct JikoniApp: App {
 }
 
 struct HubView: View {
-    let viewModel: HubViewModel
+    @Bindable var viewModel: HubViewModel
     
     var body: some View {
         if let user = viewModel.currentUser {
             ProfileView(user: user)
         } else {
-            // Fallback just in case, but currentUser is now default
-            ProgressView()
-                .onAppear {
-                    Task {
-                        await viewModel.signIn()
-                    }
-                }
+            NavigationStack {
+                LoginView(viewModel: viewModel)
+            }
         }
     }
 }

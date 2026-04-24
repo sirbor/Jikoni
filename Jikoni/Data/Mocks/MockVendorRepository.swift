@@ -844,10 +844,44 @@ class MockVendorRepository: VendorRepository {
     ]
     
     func fetchVendors() async throws -> [Vendor] {
-        return vendors
+        return vendors.map(hydrateDrinkImages)
     }
     
     func fetchVendor(id: String) async throws -> Vendor? {
-        return vendors.first { $0.id == id }
+        vendors.map(hydrateDrinkImages).first { $0.id == id }
+    }
+
+    private func hydrateDrinkImages(for vendor: Vendor) -> Vendor {
+        var copy = vendor
+        guard var inventory = copy.inventory, let drinks = inventory["Drinks"] else { return copy }
+        inventory["Drinks"] = drinks.map { drink in
+            var hydrated = drink
+            if hydrated.imageUrl == nil || hydrated.imageUrl?.isEmpty == true {
+                hydrated.imageUrl = imageURLForBeverage(named: hydrated.name, category: hydrated.amount)
+            }
+            return hydrated
+        }
+        copy.inventory = inventory
+        return copy
+    }
+
+    private func imageURLForBeverage(named name: String, category: String) -> String {
+        let key = "\(name) \(category)".lowercased()
+        if key.contains("coffee") || category == "Caffeine" {
+            return "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800"
+        }
+        if key.contains("beer") || category == "Beer" {
+            return "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800"
+        }
+        if key.contains("lemonade") || category == "Lemonade" {
+            return "https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?q=80&w=800"
+        }
+        if key.contains("shake") || category == "Milkshake" {
+            return "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=800"
+        }
+        if key.contains("mocktail") || category == "Mocktail" {
+            return "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=800"
+        }
+        return "https://images.unsplash.com/photo-1514361892635-eae31ecb6f6f?q=80&w=800"
     }
 }

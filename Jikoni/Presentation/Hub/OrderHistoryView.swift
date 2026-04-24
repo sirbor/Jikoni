@@ -2,6 +2,9 @@ import SwiftUI
 
 struct OrderHistoryView: View {
     @Bindable var viewModel: HubViewModel
+    @Environment(MarketplaceViewModel.self) private var marketplaceViewModel
+    @State private var supportAlertMessage: String?
+    @State private var selectedOrder: Order?
     
     var body: some View {
         ScrollView {
@@ -26,25 +29,45 @@ struct OrderHistoryView: View {
                             Text("\(order.items.count) Items")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
+                            Text("\(order.restaurantName) • \(order.createdAt.formatted(date: .abbreviated, time: .shortened))")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                             
                             HStack {
-                                Text("Total: $\(order.total.formatted())")
+                                Text("Total: \(order.total.currencyString())")
                                     .fontWeight(.medium)
                                 Spacer()
                                 Button("Request Return") {
                                     viewModel.requestReturn(orderId: order.id)
+                                    supportAlertMessage = viewModel.lastSupportMessage
+                                }
+                                .disabled(viewModel.hasRequestedReturn(orderId: order.id))
+                                .font(.caption)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background((viewModel.hasRequestedReturn(orderId: order.id) ? Color.green : Color.orange).opacity(0.12))
+                                .foregroundColor(viewModel.hasRequestedReturn(orderId: order.id) ? .green : .orange)
+                                .cornerRadius(12)
+
+                                Button("Reorder") {
+                                    marketplaceViewModel.reorder(from: order)
+                                    supportAlertMessage = "Order added back to cart for quick checkout."
                                 }
                                 .font(.caption)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 6)
-                                .background(.orange.opacity(0.1))
-                                .foregroundColor(.orange)
+                                .background(.green.opacity(0.12))
+                                .foregroundColor(.green)
                                 .cornerRadius(12)
                             }
+
+                            Button("View Receipt") {
+                                selectedOrder = order
+                            }
+                            .font(.caption)
                         }
                         .padding()
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(20)
+                        .glassCard(cornerRadius: 20)
                     }
                 }
             }
@@ -52,6 +75,19 @@ struct OrderHistoryView: View {
         }
         .navigationTitle("Order History")
         .background(Color(.systemGroupedBackground))
+        .alert("Support Update", isPresented: Binding(
+            get: { supportAlertMessage != nil },
+            set: { newValue in
+                if !newValue { supportAlertMessage = nil }
+            }
+        )) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(supportAlertMessage ?? "")
+        }
+        .sheet(item: $selectedOrder) { order in
+            ReceiptDetailView(order: order)
+        }
     }
 }
 
@@ -60,11 +96,12 @@ struct StatusBadge: View {
     
     var color: Color {
         switch status {
-        case .placed: return .blue
+        case .received: return .blue
+        case .confirmed: return .cyan
         case .preparing: return .orange
-        case .pickedUp: return .purple
-        case .delivering: return .indigo
-        case .completed: return .green
+        case .riderAssigned: return .purple
+        case .onTheWay: return .indigo
+        case .delivered: return .green
         }
     }
     
@@ -77,5 +114,50 @@ struct StatusBadge: View {
             .background(color.opacity(0.2))
             .foregroundColor(color)
             .cornerRadius(8)
+    }
+}
+
+struct ReceiptDetailView: View {
+    let order: Order
+
+    private var receiptText: String {
+        let lines = order.items.map { "- \($0.name) \($0.price.currencyString())" }.joined(separator: "\n")
+        return """
+        Order ID: \(order.id)
+        Date: \(order.createdAt.formatted(date: .abbreviated, time: .shortened))
+        Restaurant: \(order.restaurantName)
+        Payment: \(order.paymentMethod)
+        
+        Items:
+        \(lines)
+        
+        Subtotal: \(order.subtotal.currencyString())
+        Delivery Fee: \((order.total - order.subtotal - order.serviceFee + order.discount - order.tip).currencyString())
+        Service Fee: \(order.serviceFee.currencyString())
+        Discount: -\(order.discount.currencyString())
+        Tip: \(order.tip.currencyString())
+        Total: \(order.total.currencyString())
+        """
+    }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                Text(receiptText)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                    .font(.system(.footnote, design: .monospaced))
+                    .glassCard(cornerRadius: 16)
+                    .padding()
+            }
+            .navigationTitle("Order Receipt")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ShareLink(item: receiptText) {
+                        Label("Export PDF", systemImage: "square.and.arrow.up")
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@ import SwiftUI
 
 struct RewardsView: View {
     @Bindable var viewModel: HubViewModel
+    @State private var referralCode = "JIKONI-REF-254"
+    @State private var flashDealEnds = Date().addingTimeInterval(1800)
     
     var body: some View {
         VStack(spacing: 24) {
@@ -24,16 +26,18 @@ struct RewardsView: View {
             .padding(.vertical, 40)
             .background(
                 LinearGradient(
-                    colors: [.orange, .red],
+                    colors: [Color(hex: "D4AF37"), Color(hex: "8A6A1C")],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
             )
             .cornerRadius(20)
-            .shadow(color: .orange.opacity(0.3), radius: 10, x: 0, y: 10)
+            .shadow(color: Color(hex: "D4AF37").opacity(0.3), radius: 10, x: 0, y: 10)
             
             // Convert Section
             VStack(spacing: 16) {
+                Text("Tier: \(viewModel.currentUser?.membershipTier.rawValue.capitalized ?? "Bronze")")
+                    .font(.headline)
                 Text("Redeem Rewards")
                     .font(.title3)
                     .fontWeight(.bold)
@@ -81,10 +85,30 @@ struct RewardsView: View {
                     .foregroundColor(.white)
                     .cornerRadius(16)
                 }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Referral Program")
+                        .font(.headline)
+                    Text("Share your code and both users get first-order discounts.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    HStack {
+                        Text(referralCode)
+                            .font(.subheadline.monospaced())
+                        Spacer()
+                        ShareLink(item: "Use my Jikoni code: \(referralCode)") {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
+                    Divider()
+                    Text("Flash deal ends: \(flashDealEnds.formatted(date: .omitted, time: .shortened))")
+                        .font(.caption)
+                }
+                .padding()
+                .glassCard(cornerRadius: 12)
             }
             .padding()
-            .background(.ultraThinMaterial)
-            .cornerRadius(20)
+            .glassCard(cornerRadius: 20)
             
             Spacer()
         }

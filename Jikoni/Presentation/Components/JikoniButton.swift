@@ -20,20 +20,26 @@ struct JikoniButton: View {
                 Text(title)
                     .fontWeight(.bold)
             }
-            .padding(.vertical, 12)
+            .padding(.vertical, 14)
             .padding(.horizontal, 24)
             .frame(maxWidth: .infinity)
             .background(
                 LinearGradient(
-                    colors: [Color.orange, Color.yellow],
+                    colors: [Color(hex: "D4AF37"), Color(hex: "B8860B")],
                     startPoint: .leading,
                     endPoint: .trailing
                 )
             )
-            .foregroundColor(.white)
-            .cornerRadius(12)
-            .shadow(color: Color.orange.opacity(0.3), radius: 10, x: 0, y: 5)
+            .foregroundColor(.black)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color(hex: "F8E7B5").opacity(0.35), lineWidth: 1)
+            )
+            .shadow(color: Color(hex: "D4AF37").opacity(0.35), radius: 10, x: 0, y: 5)
         }
+        .buttonStyle(.plain)
+        .animation(.easeInOut(duration: 0.2), value: title)
     }
 }
 

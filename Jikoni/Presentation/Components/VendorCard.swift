@@ -6,12 +6,11 @@ struct VendorCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack(alignment: .topTrailing) {
-                // Rectangular Image Holder
                 AsyncImage(url: URL(string: vendor.imageUrls.first ?? "")) { phase in
                     switch phase {
                     case .empty:
                         Rectangle()
-                            .fill(Color.gray.opacity(0.1))
+                            .fill(Color.gray.opacity(0.15))
                             .overlay(ProgressView())
                     case .success(let image):
                         image
@@ -25,10 +24,16 @@ struct VendorCard: View {
                         EmptyView()
                     }
                 }
-                .frame(height: 100)
+                .frame(height: 120)
                 .clipped()
+                .overlay(
+                    LinearGradient(
+                        colors: [.clear, .black.opacity(0.58)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
                 
-                // Rating Overlay
                 HStack(spacing: 2) {
                     Image(systemName: "star.fill")
                         .foregroundColor(Color(hex: "D4AF37"))
@@ -43,7 +48,7 @@ struct VendorCard: View {
                 .padding(6)
             }
             
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(vendor.name)
                     .font(.custom("Georgia-Bold", size: 13))
                     .foregroundStyle(.primary)
@@ -56,20 +61,40 @@ struct VendorCard: View {
                     
                     Spacer()
                     
-                    Label("$\(vendor.deliveryFee.formatted())", systemImage: "bicycle")
+                    Label(vendor.deliveryFee.currencyString(), systemImage: "bicycle")
                         .font(.system(size: 9, weight: .medium))
                         .foregroundColor(.secondary)
                 }
+
+                HStack(spacing: 8) {
+                    Text(vendor.isOpenNow ? "Open" : "Closed")
+                        .font(.system(size: 9, weight: .bold))
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background((vendor.isOpenNow ? Color.green : Color.gray).opacity(0.16))
+                        .foregroundStyle(vendor.isOpenNow ? .green : .secondary)
+                        .clipShape(Capsule())
+
+                    Text("~\(vendor.estimatedDeliveryMinutes)m")
+                        .font(.system(size: 9, weight: .semibold))
+                        .foregroundStyle(.secondary)
+                }
             }
-            .padding(8)
-            .background(.ultraThinMaterial)
+            .padding(10)
+            .background(
+                LinearGradient(
+                    colors: [Color.white.opacity(0.95), Color(hex: "F8F5ED").opacity(0.92)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
         }
         .frame(width: 150)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .clipShape(RoundedRectangle(cornerRadius: 18))
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(hex: "D4AF37").opacity(0.2), lineWidth: 0.5)
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(Color(hex: "D4AF37").opacity(0.35), lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 5)
     }
 }

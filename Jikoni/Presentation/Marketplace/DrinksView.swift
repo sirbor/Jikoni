@@ -72,16 +72,7 @@ struct DrinksView: View {
     
     private func drinkRow(_ drink: Ingredient, from vendor: Vendor) -> some View {
         HStack(spacing: 16) {
-            // Drink Icon based on type
-            ZStack {
-                Circle()
-                    .fill(Color(hex: "D4AF37").opacity(0.1))
-                    .frame(width: 50, height: 50)
-                
-                Image(systemName: iconForCategory(drink.amount))
-                    .foregroundStyle(Color(hex: "D4AF37"))
-                    .font(.title3)
-            }
+            drinkThumbnail(for: drink)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(drink.name)
@@ -108,7 +99,7 @@ struct DrinksView: View {
             Button {
                 viewModel.addToCart(ingredient: drink)
             } label: {
-                Text("$\(drink.price.formatted())")
+                Text(drink.price.currencyString())
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
@@ -124,6 +115,45 @@ struct DrinksView: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color(hex: "D4AF37").opacity(0.1), lineWidth: 0.5)
         )
+    }
+
+    @ViewBuilder
+    private func drinkThumbnail(for drink: Ingredient) -> some View {
+        if let imageUrl = drink.imageUrl, let url = URL(string: imageUrl) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                case .empty:
+                    ProgressView()
+                case .failure:
+                    fallbackDrinkIcon(drink.amount)
+                @unknown default:
+                    fallbackDrinkIcon(drink.amount)
+                }
+            }
+            .frame(width: 56, height: 56)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(Color(hex: "D4AF37").opacity(0.35), lineWidth: 1)
+            )
+        } else {
+            fallbackDrinkIcon(drink.amount)
+        }
+    }
+
+    private func fallbackDrinkIcon(_ category: String) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color(hex: "D4AF37").opacity(0.12))
+                .frame(width: 56, height: 56)
+            Image(systemName: iconForCategory(category))
+                .foregroundStyle(Color(hex: "D4AF37"))
+                .font(.title3)
+        }
     }
     
     private func iconForCategory(_ category: String) -> String {

@@ -59,16 +59,20 @@ class MockOrderRepository: OrderRepository {
     
     private func startSimulation(for orderId: String) {
         Task {
-            // 1. Preparing
+            // 1. Confirmed
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            updateOrderStatus(id: orderId, status: .confirmed)
+            
+            // 2. Preparing
             try? await Task.sleep(nanoseconds: 2_000_000_000)
             updateOrderStatus(id: orderId, status: .preparing)
             
-            // 2. Picked Up
+            // 3. Rider Assigned
             try? await Task.sleep(nanoseconds: 2_000_000_000)
-            updateOrderStatus(id: orderId, status: .pickedUp)
-            
-            // 3. Delivering + Movement through 5 Posh Districts
-            updateOrderStatus(id: orderId, status: .delivering)
+            updateOrderStatus(id: orderId, status: .riderAssigned)
+
+            // 4. On the way + movement
+            updateOrderStatus(id: orderId, status: .onTheWay)
             
             for nodeIndex in 0..<(deliveryRoute.count - 1) {
                 let startNode = deliveryRoute[nodeIndex]
@@ -86,8 +90,8 @@ class MockOrderRepository: OrderRepository {
                 }
             }
             
-            // 4. Completed
-            updateOrderStatus(id: orderId, status: .completed)
+            // 5. Delivered
+            updateOrderStatus(id: orderId, status: .delivered)
             activeOrder = nil
             notifyActiveOrder()
         }

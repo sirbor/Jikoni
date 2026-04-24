@@ -29,6 +29,13 @@ struct RecipeCard: View {
                 }
                 .frame(height: 200)
                 .clipped()
+                .overlay(
+                    LinearGradient(
+                        colors: [.clear, .black.opacity(0.55)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
                 
                 // Favorite Button
                 Button(action: onLike) {
@@ -78,7 +85,13 @@ struct RecipeCard: View {
                 .foregroundStyle(Color(hex: "CFB53B"))
             }
             .padding(16)
-            .background(.ultraThinMaterial)
+            .background(
+                LinearGradient(
+                    colors: [Color.white.opacity(0.95), Color(hex: "F8F5ED").opacity(0.94)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
         }
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .overlay(

@@ -72,3 +72,49 @@ extension Color {
         )
     }
 }
+
+extension View {
+    func glassCard(cornerRadius: CGFloat = 20) -> some View {
+        self
+            .background(
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .fill(.ultraThinMaterial)
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.22),
+                            Color(hex: "D4AF37").opacity(0.12),
+                            Color.black.opacity(0.06)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+                }
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(.white.opacity(0.28), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.12), radius: 12, x: 0, y: 6)
+    }
+}
+
+enum AppCurrency: String, CaseIterable {
+    case kes = "KES"
+    case usd = "USD"
+}
+
+extension Double {
+    func currencyString() -> String {
+        let code = UserDefaults.standard.string(forKey: "preferredCurrencyCode") ?? AppCurrency.kes.rawValue
+        let currency = AppCurrency(rawValue: code) ?? .kes
+        switch currency {
+        case .kes:
+            let amount = self * 100
+            return "KSh \(Int(amount.rounded()))"
+        case .usd:
+            return "$\(self.formatted(.number.precision(.fractionLength(2))))"
+        }
+    }
+}

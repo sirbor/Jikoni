@@ -15,11 +15,12 @@ class TrackingViewModel {
     var statusProgress: Double {
         guard let order = activeOrder else { return 0 }
         switch order.status {
-        case .placed: return 0.2
-        case .preparing: return 0.4
-        case .pickedUp: return 0.6
-        case .delivering: return 0.8
-        case .completed: return 1.0
+        case .received: return 0.15
+        case .confirmed: return 0.3
+        case .preparing: return 0.5
+        case .riderAssigned: return 0.7
+        case .onTheWay: return 0.9
+        case .delivered: return 1.0
         }
     }
     

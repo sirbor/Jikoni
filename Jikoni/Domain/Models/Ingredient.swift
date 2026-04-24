@@ -6,4 +6,9 @@ struct Ingredient: Identifiable, Codable, Equatable, Hashable {
     let amount: String
     let price: Double
     let vendorId: String?
+    var details: String = ""
+    var imageUrl: String? = nil
+    var isAvailable: Bool = true
+    var nutritionalNotes: String = ""
+    var dietaryTags: [String] = []
 }

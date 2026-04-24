@@ -4,6 +4,10 @@ import MapKit
 struct TrackingView: View {
     @State var viewModel: TrackingViewModel
     @State private var position: MapCameraPosition = .automatic
+    @Environment(\.openURL) private var openURL
+    @State private var chatMessage = ""
+    @State private var etaMinutes = 28
+    @State private var showDeliveredAlert = false
     
     var body: some View {
         NavigationStack {
@@ -54,6 +58,22 @@ struct TrackingView: View {
             .task {
                 await viewModel.startTracking()
             }
+            .onChange(of: viewModel.activeOrder?.status) { _, newStatus in
+                switch newStatus {
+                case .received: etaMinutes = 32
+                case .confirmed: etaMinutes = 28
+                case .preparing: etaMinutes = 22
+                case .riderAssigned: etaMinutes = 16
+                case .onTheWay: etaMinutes = 8
+                case .delivered: etaMinutes = 0
+                case .none: break
+                }
+            }
+            .alert("Delivery Confirmed", isPresented: $showDeliveredAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("Thanks! Please leave a quick review from your order history.")
+            }
         }
     }
     
@@ -74,6 +94,14 @@ struct TrackingView: View {
                     .font(.largeTitle)
                     .foregroundColor(.orange)
             }
+
+            HStack {
+                Label("ETA", systemImage: "clock")
+                Spacer()
+                Text("\(etaMinutes) min")
+                    .fontWeight(.bold)
+            }
+            .font(.subheadline)
             
             ProgressView(value: viewModel.statusProgress)
                 .tint(.orange)
@@ -85,9 +113,48 @@ struct TrackingView: View {
                 Text("Order Total")
                     .fontWeight(.semibold)
                 Spacer()
-                Text("$\(order.total.formatted())")
+                Text(order.total.currencyString())
             }
             .font(.footnote)
+
+            HStack(spacing: 10) {
+                Button {
+                    if let phoneURL = URL(string: "tel://+254700987654") { openURL(phoneURL) }
+                } label: {
+                    Label("Call Rider", systemImage: "phone.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+
+                Button {
+                    if let whatsappURL = URL(string: "https://wa.me/254700987654") { openURL(whatsappURL) }
+                } label: {
+                    Label("WhatsApp", systemImage: "message.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Restaurant Chat")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                TextField("Send quick note to restaurant", text: $chatMessage)
+                    .textFieldStyle(.roundedBorder)
+                Button("Send Message") {
+                    chatMessage = ""
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(chatMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+
+            if order.status == .delivered {
+                Button("Confirm Receipt") {
+                    showDeliveredAlert = true
+                }
+                .buttonStyle(.borderedProminent)
+            }
         }
         .padding()
         .background(.ultraThinMaterial)
@@ -97,11 +164,12 @@ struct TrackingView: View {
     
     private func deliverySubtitle(for status: OrderStatus) -> String {
         switch status {
-        case .placed: return "Waiting for confirmation"
+        case .received: return "Order received by restaurant"
+        case .confirmed: return "Restaurant confirmed your order"
         case .preparing: return "Chef is preparing your items"
-        case .pickedUp: return "Rider has your items"
-        case .delivering: return "Rider is approaching"
-        case .completed: return "Delivered to your doorstep"
+        case .riderAssigned: return "A rider has been assigned"
+        case .onTheWay: return "Rider is approaching"
+        case .delivered: return "Delivered to your doorstep"
         }
     }
 }

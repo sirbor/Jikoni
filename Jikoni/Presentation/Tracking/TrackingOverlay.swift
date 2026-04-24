@@ -5,7 +5,7 @@ struct TrackingOverlay: View {
     @State private var isExpanded = false
     
     var body: some View {
-        if let order = viewModel.activeOrder, order.status != .completed {
+        if let order = viewModel.activeOrder, order.status != .delivered {
             VStack(spacing: 0) {
                 if isExpanded {
                     TrackingView(viewModel: viewModel)
@@ -58,7 +58,7 @@ struct TrackingOverlay: View {
             .padding(.horizontal)
             .padding(.bottom, 8)
             .onChange(of: order.status) { oldStatus, newStatus in
-                if newStatus == .delivering && !isExpanded {
+                if newStatus == .onTheWay && !isExpanded {
                     withAnimation(.spring()) { isExpanded = true }
                 }
             }

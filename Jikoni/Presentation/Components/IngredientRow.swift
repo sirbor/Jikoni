@@ -13,7 +13,7 @@ struct IngredientRow: View {
                 HStack {
                     Text(ingredient.amount)
                     Text("•")
-                    Text("$\(ingredient.price.formatted())")
+                    Text(ingredient.price.currencyString())
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)

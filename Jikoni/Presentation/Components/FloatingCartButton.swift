@@ -22,7 +22,7 @@ struct FloatingCartButton: View {
                     
                     Text("•")
                     
-                    Text("$\(viewModel.totalCartPrice.formatted())")
+                    Text(viewModel.totalCartPrice.currencyString())
                         .font(.system(size: 14, weight: .bold, design: .rounded))
                 }
                 .padding(.horizontal, 20)
