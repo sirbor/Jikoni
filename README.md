@@ -39,7 +39,7 @@ The purchase journey is continuous from cart confirmation through live tracking 
 ### Customer Retention
 Saved preferences and favorites create a faster repeat-order loop and stronger retention behavior.
 <p align="center">
-  <img src="Jikoni/Screenshots/PROFILE.PNG" width="240" />
+  <img src="Jikoni/Screenshots/Rewards.png" width="240" />
   <img src="Jikoni/Screenshots/Favorite%20Dishes.png" width="240" />
   <img src="Jikoni/Screenshots/Wishlist.png" width="240" />
 </p>
@@ -47,9 +47,17 @@ Saved preferences and favorites create a faster repeat-order loop and stronger r
 ### Settings
 Users can manage payment, profile, and app-level settings from a centralized control experience.
 <p align="center">
-  <img src="Jikoni/Screenshots/Payment%20settings.png" width="240" />
+  <img src="Jikoni/Screenshots/Profile.png" width="240" />
   <img src="Jikoni/Screenshots/Settings%20Page.png" width="240" />
   <img src="Jikoni/Screenshots/Profile%20settings.png" width="240" />
+</p>
+
+### FAQ
+Frequently asked support and account setup information in one place.
+<p align="center">
+  <img src="Jikoni/Screenshots/Support.png" width="240" />
+  <img src="Jikoni/Screenshots/address.png" width="240" />
+  <img src="Jikoni/Screenshots/Payment%20setting.png" width="240" />
 </p>
 
 ## Technical Stack
