@@ -3,304 +3,467 @@ import SwiftUI
 struct VendorDetailView: View {
     @Environment(MarketplaceViewModel.self) private var marketplaceViewModel
     @Environment(FeedViewModel.self) private var feedViewModel
+    @Environment(HubViewModel.self) private var hubViewModel
+    @Environment(\.dismiss) private var dismiss
     let vendor: Vendor
-    
-    @State private var showingReviewSheet = false
-    @State private var selectedTab = 0
     @State private var selectedIngredient: Ingredient?
-    @State private var selectedCategory: String?
-    
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    // Image Header Carousel
-                    TabView {
-                        ForEach(vendor.imageUrls, id: \.self) { imageUrl in
-                            AsyncImage(url: URL(string: imageUrl)) { phase in
-                                switch phase {
-                                case .empty:
-                                    Rectangle().fill(Color.gray.opacity(0.1)).overlay(ProgressView())
-                                case .success(let image):
-                                    image.resizable().aspectRatio(contentMode: .fill)
-                                case .failure:
-                                    Rectangle().fill(Color.gray.opacity(0.2)).overlay(Image(systemName: "photo"))
-                                @unknown default:
-                                    EmptyView()
-                                }
-                            }
-                        }
-                    }
-                    .tabViewStyle(.page)
-                    .frame(height: 250)
-                    .clipped()
-                    
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack(alignment: .top) {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(vendor.name)
-                                    .font(.custom("Georgia-Bold", size: 28))
-                                
-                                HStack {
-                                    Text(vendor.cuisine)
-                                        .fontWeight(.bold)
-                                        .foregroundStyle(Color(hex: "D4AF37"))
-                                    Text("•")
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "star.fill")
-                                            .foregroundStyle(Color(hex: "D4AF37"))
-                                        Text(String(format: "%.1f", vendor.rating))
-                                    }
-                                }
-                                .font(.subheadline)
-                                Label("~\(vendor.estimatedDeliveryMinutes) min • Min \(vendor.minimumOrder.currencyString()) • Fee \(vendor.deliveryFee.currencyString())", systemImage: "clock")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            
-                            Spacer()
+    @State private var showReviewSheet = false
 
-                            VStack(spacing: 8) {
-                                Button {
-                                    marketplaceViewModel.toggleFavoriteRestaurant(vendor.id)
-                                } label: {
-                                    Image(systemName: marketplaceViewModel.isFavoriteRestaurant(vendor.id) ? "heart.fill" : "heart")
-                                        .foregroundStyle(.pink)
-                                        .padding(8)
-                                        .background(.pink.opacity(0.12))
-                                        .clipShape(Circle())
-                                }
+    private var currentVendor: Vendor {
+        marketplaceViewModel.vendorForId(vendor.id) ?? vendor
+    }
 
-                                Button {
-                                    showingReviewSheet = true
-                                } label: {
-                                    VStack(spacing: 4) {
-                                        Image(systemName: "square.and.pencil")
-                                        Text("Review")
-                                            .font(.system(size: 10, weight: .bold))
-                                    }
-                                    .foregroundStyle(Color(hex: "D4AF37"))
-                                    .padding(10)
-                                    .background(Color(hex: "D4AF37").opacity(0.1))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                }
-                            }
-                        }
-
-                        Picker("Content", selection: $selectedTab) {
-                            Text("Menu").tag(0)
-                            Text("Info").tag(1)
-                            Text("Reviews").tag(2)
-                        }
-                        .pickerStyle(.segmented)
-                        
-                        Divider()
-
-                        if selectedTab == 0 {
-                            menuContent
-                        } else if selectedTab == 1 {
-                            infoContent
-                        } else {
-                            reviewsContent
-                        }
-                    }
-                    .padding(20)
-                    .padding(.bottom, 100) // Space for floating button
-                }
-            }
-            
-            FloatingCartButton(viewModel: marketplaceViewModel)
-                .padding(.bottom, 20)
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .ignoresSafeArea(edges: .top)
-        .sheet(isPresented: $showingReviewSheet) {
-            AddReviewView { review in
-                // Submit review logic (mocked)
-                print("Review submitted: \(review.comment)")
-            }
-        }
-        .sheet(item: $selectedIngredient) { ingredient in
-            ItemDetailSheet(ingredient: ingredient) {
-                marketplaceViewModel.addToCart(ingredient: $0)
-            }
-        }
+    private var linkedRecipe: Recipe? {
+        feedViewModel.recipes.first { $0.vendorId == vendor.id }
     }
 
     private var orderedCategories: [String] {
-        let inventory = vendor.inventory ?? [:]
-        let preferred = ["Starters", "Mains", "Sides", "Drinks", "Desserts", "Soups", "Meals"]
-        let existingPreferred = preferred.filter { inventory[$0] != nil }
-        let remaining = inventory.keys.filter { !existingPreferred.contains($0) }.sorted()
-        return existingPreferred + remaining
-    }
-
-    private var menuContent: some View {
-        let inventory = vendor.inventory ?? [:]
-        return VStack(alignment: .leading, spacing: 14) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(orderedCategories, id: \.self) { category in
-                        Button(category) { selectedCategory = category }
-                            .buttonStyle(.borderedProminent)
-                            .tint(selectedCategory == category ? .orange : .gray.opacity(0.35))
-                    }
-                }
-            }
-
-            ForEach(orderedCategories.filter { selectedCategory == nil || $0 == selectedCategory }, id: \.self) { category in
-                if let items = inventory[category] {
-                    Text(category)
-                        .font(.custom("Georgia-Bold", size: 20))
-                    ForEach(items) { item in
-                        Button {
-                            selectedIngredient = item
-                        } label: {
-                            HStack(spacing: 12) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(.orange.opacity(0.15))
-                                    .frame(width: 64, height: 64)
-                                    .overlay(Image(systemName: "fork.knife").foregroundStyle(.orange))
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(item.name)
-                                        .font(.headline)
-                                        .foregroundStyle(.primary)
-                                    Text(item.details.isEmpty ? "Delicious chef special." : item.details)
-                                        .font(.caption)
-                                        .lineLimit(2)
-                                        .foregroundStyle(.secondary)
-                                    Text(item.price.currencyString())
-                                        .font(.subheadline.bold())
-                                        .foregroundStyle(.orange)
-                                }
-                                Spacer()
-                                Button {
-                                    marketplaceViewModel.toggleFavoriteDish(item.id)
-                                } label: {
-                                    Image(systemName: marketplaceViewModel.favoriteDishIds.contains(item.id) ? "heart.fill" : "heart")
-                                        .foregroundStyle(.pink)
-                                }
-                                Text(item.isAvailable ? "Available" : "Sold Out")
-                                    .font(.caption2.bold())
-                                    .padding(6)
-                                    .background((item.isAvailable ? Color.green : Color.red).opacity(0.12))
-                                    .foregroundStyle(item.isAvailable ? .green : .red)
-                                    .clipShape(Capsule())
-                            }
-                            .padding(.vertical, 6)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-            }
-        }
-    }
-
-    private var infoContent: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label(vendor.openingHours, systemImage: "clock")
-            Label(vendor.phoneNumber, systemImage: "phone")
-            Label("Hygiene Rating: \(vendor.hygieneRating)", systemImage: "checkmark.shield")
-            Label("Map: \(vendor.location.latitude.formatted()), \(vendor.location.longitude.formatted())", systemImage: "map")
-            Label("Delivery fee \(vendor.deliveryFee.currencyString())", systemImage: "scooter")
-        }
-        .font(.subheadline)
-    }
-
-    private var reviewsContent: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ForEach(vendor.reviews ?? []) { review in
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack {
-                        Text(review.author).font(.headline)
-                        Spacer()
-                        Text(review.date.formatted(date: .abbreviated, time: .omitted))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    Text(String(repeating: "★", count: review.rating))
-                        .foregroundStyle(.orange)
-                    Text(review.comment)
-                        .font(.subheadline)
-                    if !review.photoUrls.isEmpty {
-                        Text("Photo attachments: \(review.photoUrls.count)")
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .padding()
-                .background(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            }
-            if (vendor.reviews ?? []).isEmpty {
-                Text("No reviews yet.")
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
-}
-
-struct ItemDetailSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    let ingredient: Ingredient
-    let onAdd: (Ingredient) -> Void
-    @State private var quantity = 1
-    @State private var variant = "Regular"
-    @State private var extras: Set<String> = []
-    @State private var notes = ""
-
-    private let variants = ["Small", "Regular", "Large"]
-    private let extraOptions: [(String, Double)] = [("Extra Cheese", 50), ("Protein Boost", 120), ("Spicy Sauce", 30)]
-
-    private var total: Double {
-        let extrasCost = extraOptions.filter { extras.contains($0.0) }.reduce(0) { $0 + $1.1 }
-        return (ingredient.price * 100 + extrasCost) * Double(quantity)
+        let inventory = currentVendor.inventory ?? [:]
+        return inventory.keys.sorted()
     }
 
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading, spacing: 14) {
-                RoundedRectangle(cornerRadius: 14)
-                    .fill(.orange.opacity(0.2))
-                    .frame(height: 180)
-                    .overlay(Image(systemName: "photo").font(.largeTitle))
-                Text(ingredient.name).font(.title3.bold())
-                Text(ingredient.details.isEmpty ? "Chef-crafted dish with fresh ingredients." : ingredient.details)
-                    .font(.subheadline).foregroundStyle(.secondary)
-                Text(ingredient.nutritionalNotes.isEmpty ? "Nutritional notes available on request." : ingredient.nutritionalNotes)
-                    .font(.caption)
-                Picker("Size", selection: $variant) {
-                    ForEach(variants, id: \.self) { Text($0).tag($0) }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                photoHeader
+
+                VStack(alignment: .leading, spacing: 22) {
+                    header
+                    statRow
+
+                    if let recipe = linkedRecipe {
+                        Text("From the Jikoni feed")
+                            .font(JikoniFont.archivo(17, weight: .extrabold))
+                            .foregroundStyle(JikoniColor.ink)
+                        NavigationLink {
+                            RecipeDetailView(recipe: recipe)
+                        } label: {
+                            linkedRecipeRow(recipe)
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    ForEach(orderedCategories, id: \.self) { category in
+                        if let items = currentVendor.inventory?[category] {
+                            Text(category)
+                                .font(JikoniFont.archivo(17, weight: .extrabold))
+                                .foregroundStyle(JikoniColor.ink)
+                            VStack(spacing: 10) {
+                                ForEach(items) { item in
+                                    Button { selectedIngredient = item } label: {
+                                        menuRow(item)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        }
+                    }
+
+                    reviewsSection
                 }
-                .pickerStyle(.segmented)
-                VStack(alignment: .leading) {
-                    Text("Extras")
-                    ForEach(extraOptions, id: \.0) { option in
-                        Toggle("\(option.0) +\((option.1 / 100).currencyString())", isOn: Binding(
-                            get: { extras.contains(option.0) },
-                            set: { isOn in
-                                if isOn { extras.insert(option.0) } else { extras.remove(option.0) }
-                            })
-                        )
+                .padding(18)
+                .padding(.bottom, 100)
+            }
+        }
+        .background(JikoniColor.ground.ignoresSafeArea())
+        .toolbar(.hidden, for: .navigationBar)
+        .ignoresSafeArea(edges: .top)
+        .overlay(alignment: .bottom) {
+            FloatingCartButton(viewModel: marketplaceViewModel)
+                .padding(.bottom, 20)
+        }
+        .sheet(item: $selectedIngredient) { ingredient in
+            ItemDetailView(vendor: currentVendor, ingredient: ingredient)
+        }
+        .sheet(item: Bindable(marketplaceViewModel).cartConflict) { conflict in
+            CartConflictSheet(conflict: conflict, viewModel: marketplaceViewModel)
+        }
+        .sheet(isPresented: $showReviewSheet) {
+            AddVendorReviewSheet(vendor: currentVendor)
+        }
+    }
+
+    private var photoHeader: some View {
+        JikoniPhotoHeader(imageUrl: vendor.imageUrls.first, height: 200) {
+            HStack {
+                JikoniCircleButton(systemImage: "chevron.left", accessibilityText: "Back") { dismiss() }
+                Spacer()
+                let isFav = marketplaceViewModel.isFavoriteRestaurant(vendor.id)
+                JikoniCircleButton(
+                    systemImage: isFav ? "heart.fill" : "heart",
+                    isFilled: isFav,
+                    accessibilityText: "Save kitchen"
+                ) {
+                    marketplaceViewModel.toggleFavoriteRestaurant(vendor.id)
+                }
+            }
+        }
+    }
+
+    private var header: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(currentVendor.name)
+                    .font(JikoniFont.archivo(24, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.ink)
+                Text("\(currentVendor.cuisine) · \(currentVendor.location.latitude == 0 ? "" : "1.8 km")")
+                    .font(JikoniFont.archivo(12))
+                    .foregroundStyle(JikoniColor.textSecondary)
+            }
+            Spacer()
+            Text(currentVendor.isOpenNow ? "Open till \(currentVendor.openingHours.split(separator: "-").last.map(String.init) ?? "late")" : "Closed")
+                .font(JikoniFont.archivo(10.5, weight: .extrabold))
+                .padding(.horizontal, 13)
+                .padding(.vertical, 9)
+                .background(JikoniColor.card)
+                .foregroundStyle(JikoniColor.textSecondary)
+                .clipShape(Capsule())
+                .jikoniShadow(.small)
+        }
+    }
+
+    private var statRow: some View {
+        HStack(spacing: 10) {
+            statBox(title: "Rating", value: String(format: "%.1f", currentVendor.rating))
+            statBox(title: "Arrives", value: "\(currentVendor.estimatedDeliveryMinutes)m")
+            statBox(title: "Delivery", value: currentVendor.deliveryFee.currencyString())
+        }
+    }
+
+    private func statBox(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(title.uppercased())
+                .font(JikoniFont.archivo(9.5, weight: .extrabold))
+                .foregroundStyle(JikoniColor.textSecondary)
+            Text(value)
+                .font(JikoniFont.archivo(17, weight: .extrabold))
+                .foregroundStyle(JikoniColor.ink)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(14)
+        .background(JikoniColor.card)
+        .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.control))
+        .jikoniShadow(.small)
+    }
+
+    private func linkedRecipeRow(_ recipe: Recipe) -> some View {
+        HStack(spacing: 13) {
+            AsyncImage(url: URL(string: recipe.imageUrls.first ?? "")) { phase in
+                if case .success(let image) = phase {
+                    image.resizable().aspectRatio(contentMode: .fill)
+                } else {
+                    JikoniColor.placeholder
+                }
+            }
+            .frame(width: 84, height: 84)
+            .clipShape(RoundedRectangle(cornerRadius: 18))
+
+            VStack(alignment: .leading, spacing: 5) {
+                Text(recipe.title)
+                    .font(JikoniFont.instrumentSerif(19))
+                    .foregroundStyle(JikoniColor.ink)
+                Text("\(recipe.author)'s recipe")
+                    .font(JikoniFont.archivo(11))
+                    .foregroundStyle(JikoniColor.textSecondary)
+                Text("View recipe")
+                    .font(JikoniFont.archivo(11, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.accent)
+            }
+            Spacer()
+        }
+        .padding(10)
+        .background(JikoniColor.card)
+        .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.card))
+        .jikoniShadow(.small)
+    }
+
+    private func menuRow(_ item: Ingredient) -> some View {
+        HStack(spacing: 13) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(item.name)
+                    .font(JikoniFont.archivo(14, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.ink)
+                Text(item.details.isEmpty ? item.amount : item.details)
+                    .font(JikoniFont.archivo(11.5))
+                    .foregroundStyle(JikoniColor.textSecondary)
+                    .lineLimit(2)
+                Text(item.price.currencyString())
+                    .font(JikoniFont.archivo(13.5, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.ink)
+            }
+            Spacer()
+            Button {
+                marketplaceViewModel.addToCart(ingredient: item)
+            } label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(JikoniColor.ink)
+                    .frame(width: 40, height: 40)
+                    .background(JikoniColor.ground)
+                    .clipShape(Circle())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(14)
+        .background(JikoniColor.card)
+        .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.control))
+        .jikoniShadow(.small)
+    }
+
+    private var reviewsSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Kitchen Reviews")
+                        .font(JikoniFont.archivo(17, weight: .extrabold))
+                        .foregroundStyle(JikoniColor.ink)
+                    HStack(spacing: 4) {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 11))
+                            .foregroundStyle(JikoniColor.accent)
+                        Text(String(format: "%.1f", currentVendor.rating))
+                            .font(JikoniFont.archivo(12, weight: .extrabold))
+                            .foregroundStyle(JikoniColor.ink)
+                        let count = currentVendor.reviews?.count ?? currentVendor.reviewCount
+                        Text("(\(count) \(count == 1 ? "review" : "reviews"))")
+                            .font(JikoniFont.archivo(12))
+                            .foregroundStyle(JikoniColor.textSecondary)
                     }
                 }
-                TextField("Special instructions", text: $notes, axis: .vertical)
-                    .textFieldStyle(.roundedBorder)
-                Stepper("Quantity: \(quantity)", value: $quantity, in: 1...10)
+
                 Spacer()
-                Button("Add to Cart • \((total / 100).currencyString())") {
-                    var customized = ingredient
-                    customized.details = "Variant: \(variant). Notes: \(notes)"
-                    onAdd(customized)
-                    dismiss()
+
+                Button {
+                    showReviewSheet = true
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "square.and.pencil")
+                            .font(.system(size: 11))
+                        Text("Add Review")
+                            .font(JikoniFont.archivo(12, weight: .extrabold))
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(JikoniColor.card)
+                    .foregroundStyle(JikoniColor.ink)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule().stroke(JikoniColor.placeholder, lineWidth: 1)
+                    )
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.orange)
-                .frame(maxWidth: .infinity)
             }
-            .padding()
-            .navigationTitle("Customize Item")
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.top, 10)
+
+            if let reviews = currentVendor.reviews, !reviews.isEmpty {
+                VStack(spacing: 10) {
+                    ForEach(reviews) { review in
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack {
+                                Text(review.author)
+                                    .font(JikoniFont.archivo(13, weight: .extrabold))
+                                    .foregroundStyle(JikoniColor.ink)
+                                Spacer()
+                                HStack(spacing: 2) {
+                                    ForEach(1...5, id: \.self) { star in
+                                        Image(systemName: star <= review.rating ? "star.fill" : "star")
+                                            .font(.system(size: 10))
+                                            .foregroundStyle(star <= review.rating ? JikoniColor.accent : JikoniColor.placeholder)
+                                    }
+                                }
+                            }
+
+                            Text(review.comment)
+                                .font(JikoniFont.archivo(12.5))
+                                .foregroundStyle(JikoniColor.textBody)
+                                .lineSpacing(2)
+
+                            Text(review.date.formatted(date: .abbreviated, time: .omitted))
+                                .font(JikoniFont.archivo(10.5))
+                                .foregroundStyle(JikoniColor.textSecondary)
+                        }
+                        .padding(14)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(JikoniColor.card)
+                        .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.control))
+                        .jikoniShadow(.small)
+                    }
+                }
+            } else {
+                Text("No reviews yet. Be the first to review this kitchen!")
+                    .font(JikoniFont.archivo(12))
+                    .foregroundStyle(JikoniColor.textSecondary)
+                    .padding(.vertical, 8)
+            }
         }
     }
 }
+
+/// The multi-kitchen conflict sheet from the Modernist design canvas — three explicit ways out.
+struct CartConflictSheet: View {
+    let conflict: CartConflict
+    @Bindable var viewModel: MarketplaceViewModel
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Capsule()
+                .fill(JikoniColor.placeholder)
+                .frame(width: 44, height: 4)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 14)
+                .padding(.bottom, 20)
+
+            Text("DIFFERENT KITCHEN")
+                .font(JikoniFont.archivo(11, weight: .extrabold))
+                .tracking(1.4)
+                .foregroundStyle(JikoniColor.accent)
+
+            Text("Start a new basket?")
+                .font(JikoniFont.instrumentSerif(30))
+                .foregroundStyle(JikoniColor.ink)
+                .padding(.top, 8)
+
+            Text("Your basket has items from **\(conflict.existingVendorName)**. Jikoni delivers one kitchen per trip, so adding **\(conflict.pendingIngredient.name)** starts a fresh basket.")
+                .font(JikoniFont.archivo(13.5))
+                .foregroundStyle(JikoniColor.textBody)
+                .padding(.top, 10)
+
+            VStack(spacing: 9) {
+                Button {
+                    viewModel.resolveConflictWithNewBasket()
+                    dismiss()
+                } label: {
+                    Text("Start new basket here")
+                        .font(JikoniFont.archivo(14, weight: .extrabold))
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 52)
+                        .background(JikoniColor.ink)
+                        .foregroundStyle(JikoniColor.ground)
+                        .clipShape(Capsule())
+                }
+
+                Button {
+                    viewModel.resolveConflictKeepingExisting()
+                    dismiss()
+                } label: {
+                    Text("Keep \(conflict.existingVendorName)")
+                        .font(JikoniFont.archivo(14, weight: .extrabold))
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 52)
+                        .background(JikoniColor.ground)
+                        .foregroundStyle(JikoniColor.ink)
+                        .clipShape(Capsule())
+                }
+
+                Button {
+                    viewModel.resolveConflictKeepingExisting()
+                    dismiss()
+                } label: {
+                    Text("Schedule both — deliver separately")
+                        .font(JikoniFont.archivo(12.5, weight: .extrabold))
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 44)
+                        .background(Color.clear)
+                        .foregroundStyle(JikoniColor.textSecondary)
+                }
+            }
+            .padding(.top, 24)
+        }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 32)
+        .background(JikoniColor.card)
+        .presentationDetents([.fraction(0.48), .medium])
+        .presentationDragIndicator(.hidden)
+    }
+}
+
+struct AddVendorReviewSheet: View {
+    let vendor: Vendor
+    @Environment(MarketplaceViewModel.self) private var marketplaceViewModel
+    @Environment(HubViewModel.self) private var hubViewModel
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var rating = 5
+    @State private var comment = ""
+    @State private var isSubmitting = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            Capsule()
+                .fill(JikoniColor.placeholder)
+                .frame(width: 44, height: 4)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 14)
+
+            Text("REVIEW KITCHEN")
+                .font(JikoniFont.archivo(11, weight: .extrabold))
+                .tracking(1.4)
+                .foregroundStyle(JikoniColor.accent)
+
+            Text("Rate \(vendor.name)")
+                .font(JikoniFont.instrumentSerif(28))
+                .foregroundStyle(JikoniColor.ink)
+
+            // Star selector
+            HStack(spacing: 8) {
+                ForEach(1...5, id: \.self) { star in
+                    Button {
+                        rating = star
+                    } label: {
+                        Image(systemName: star <= rating ? "star.fill" : "star")
+                            .font(.system(size: 26))
+                            .foregroundStyle(star <= rating ? JikoniColor.accent : JikoniColor.placeholder)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Your Experience")
+                    .font(JikoniFont.archivo(12, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.ink)
+
+                TextField("What did you enjoy? (e.g. food quality, delivery speed, flavors)", text: $comment, axis: .vertical)
+                    .lineLimit(3...5)
+                    .font(JikoniFont.archivo(13))
+                    .padding(14)
+                    .background(JikoniColor.ground)
+                    .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.control))
+            }
+
+            Button {
+                let trimmed = comment.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !trimmed.isEmpty else { return }
+                isSubmitting = true
+                let authorName = hubViewModel.currentUser?.displayName ?? "Guest Cook"
+                let newReview = Review(author: authorName, comment: trimmed, rating: rating)
+                Task {
+                    await marketplaceViewModel.addVendorReview(vendorId: vendor.id, review: newReview)
+                    isSubmitting = false
+                    dismiss()
+                }
+            } label: {
+                if isSubmitting {
+                    ProgressView().tint(JikoniColor.ground)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 52)
+                } else {
+                    Text("Submit Review")
+                        .font(JikoniFont.archivo(14, weight: .extrabold))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 52)
+                }
+            }
+            .background(comment.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? JikoniColor.placeholder : JikoniColor.ink)
+            .foregroundStyle(JikoniColor.ground)
+            .clipShape(Capsule())
+            .disabled(comment.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isSubmitting)
+
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+        .background(JikoniColor.card)
+        .presentationDetents([.fraction(0.55), .medium])
+    }
+}
+

@@ -1,44 +1,30 @@
 import SwiftUI
 
+/// Appears only once something is actually in the basket — an empty pill
+/// floating over every browse screen would just be noise.
 struct FloatingCartButton: View {
-    let viewModel: MarketplaceViewModel
+    @Bindable var viewModel: MarketplaceViewModel
     @State private var showingCart = false
-    
-    var itemCount: Int {
-        viewModel.cart.values.reduce(0, +)
-    }
-    
+
     var body: some View {
-        if itemCount > 0 {
+        if !viewModel.cart.isEmpty {
             Button {
                 showingCart = true
             } label: {
-                HStack(spacing: 8) {
-                    Image(systemName: "cart.fill")
-                        .font(.system(size: 18, weight: .bold))
-                    
-                    Text("\(itemCount) \(itemCount == 1 ? "Item" : "Items")")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
-                    
-                    Text("•")
-                    
+                HStack {
+                    Text("\(viewModel.cart.values.reduce(0, +)) items")
+                    Spacer()
                     Text(viewModel.totalCartPrice.currencyString())
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
                 }
+                .font(JikoniFont.archivo(13.5, weight: .extrabold))
                 .padding(.horizontal, 20)
-                .padding(.vertical, 12)
-                .background(
-                    Capsule()
-                        .fill(Color(hex: "D4AF37"))
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
-                )
-                .foregroundStyle(.black)
-                .overlay(
-                    Capsule()
-                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
-                )
+                .frame(height: 56)
+                .background(JikoniColor.ink)
+                .foregroundStyle(JikoniColor.ground)
+                .clipShape(Capsule())
+                .jikoniShadow(.medium)
             }
-            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .padding(.horizontal, 18)
             .sheet(isPresented: $showingCart) {
                 CartView(viewModel: viewModel)
             }

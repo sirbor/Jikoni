@@ -1,111 +1,111 @@
 import SwiftUI
 
-struct RecipeCard: View {
+/// Every recipe carries a one-tap bridge into the marketplace via "Order it".
+struct RecipeCard<Destination: View>: View {
     let recipe: Recipe
     var isLiked: Bool = false
     let onLike: () -> Void
-    
+    @ViewBuilder var destination: () -> Destination
+
+    @Environment(\.switchTab) private var switchTab
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ZStack(alignment: .topTrailing) {
-                // Rectangular Image Holder
-                AsyncImage(url: URL(string: recipe.imageUrls.first ?? "")) { phase in
-                    switch phase {
-                    case .empty:
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.1))
-                            .overlay(ProgressView())
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    case .failure:
-                        Rectangle()
-                            .fill(Color.gray.opacity(0.2))
-                            .overlay(Image(systemName: "photo").foregroundStyle(.secondary))
-                    @unknown default:
-                        EmptyView()
+            HStack(spacing: 10) {
+                Circle()
+                    .fill(JikoniColor.placeholderAlt)
+                    .frame(width: 34, height: 34)
+                Text(recipe.author)
+                    .font(JikoniFont.archivo(12.5, weight: .extrabold))
+                    .foregroundStyle(JikoniColor.ink)
+                Spacer()
+            }
+            .padding(.bottom, 12)
+
+            NavigationLink(destination: destination) {
+                VStack(alignment: .leading, spacing: 0) {
+                    AsyncImage(url: URL(string: recipe.imageUrls.first ?? "")) { phase in
+                        switch phase {
+                        case .empty:
+                            Rectangle()
+                                .fill(JikoniColor.placeholder)
+                                .overlay(ProgressView())
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        case .failure:
+                            Rectangle()
+                                .fill(JikoniColor.placeholder)
+                                .overlay(Image(systemName: "photo").foregroundStyle(JikoniColor.textSecondary))
+                        @unknown default:
+                            EmptyView()
+                        }
                     }
+                    .frame(height: 198)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.cardSmall))
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(recipe.title)
+                            .font(JikoniFont.instrumentSerif(26))
+                            .foregroundStyle(JikoniColor.ink)
+                            .lineLimit(1)
+
+                        Text(recipe.description)
+                            .font(JikoniFont.archivo(12))
+                            .foregroundStyle(JikoniColor.textSecondary)
+                            .lineLimit(2)
+                    }
+                    .padding(.top, 14)
                 }
-                .frame(height: 200)
-                .clipped()
-                .overlay(
-                    LinearGradient(
-                        colors: [.clear, .black.opacity(0.55)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                
-                // Favorite Button
+            }
+            .buttonStyle(.plain)
+            .overlay(alignment: .topTrailing) {
                 Button(action: onLike) {
                     Image(systemName: isLiked ? "heart.fill" : "heart")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundStyle(isLiked ? .red : .white)
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(isLiked ? JikoniColor.accent : JikoniColor.ink)
                         .padding(10)
-                        .background(.ultraThinMaterial)
+                        .background(JikoniColor.card)
                         .clipShape(Circle())
-                        .overlay(
-                            Circle()
-                                .stroke(Color(hex: "D4AF37").opacity(0.5), lineWidth: 1)
-                        )
+                        .jikoniShadow(.small)
                         .padding(12)
                 }
             }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(recipe.title)
-                        .font(.custom("Georgia-Bold", size: 18))
-                        .foregroundStyle(.primary)
-                        .lineLimit(1)
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 4) {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(Color(hex: "D4AF37"))
-                            .font(.system(size: 12))
-                        Text("4.9")
-                            .font(.system(.subheadline, design: .rounded, weight: .bold))
-                    }
+
+            HStack(spacing: 14) {
+                HStack(spacing: 6) {
+                    Image(systemName: "clock")
+                        .font(.system(size: 12))
+                    Text("25 min")
                 }
-                
-                Text(recipe.description)
-                    .font(.system(size: 13, weight: .medium, design: .rounded))
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-                
-                HStack {
-                    Label(recipe.author, systemImage: "person.circle.fill")
-                    Spacer()
-                    Label("25 mins", systemImage: "clock.fill")
+                HStack(spacing: 6) {
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 12))
+                        .foregroundStyle(JikoniColor.accent)
+                    Text("\(recipe.likes)")
                 }
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundStyle(Color(hex: "CFB53B"))
+                Spacer()
+                Button {
+                    switchTab(.order)
+                } label: {
+                    Text("Order it")
+                        .font(JikoniFont.archivo(12, weight: .extrabold))
+                        .padding(.horizontal, 20)
+                        .frame(height: 42)
+                        .background(JikoniColor.ink)
+                        .foregroundStyle(JikoniColor.ground)
+                        .clipShape(Capsule())
+                }
             }
-            .padding(16)
-            .background(
-                LinearGradient(
-                    colors: [Color.white.opacity(0.95), Color(hex: "F8F5ED").opacity(0.94)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
+            .font(JikoniFont.archivo(12, weight: .extrabold))
+            .foregroundStyle(JikoniColor.textSecondary)
+            .padding(.top, 13)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 24))
-        .overlay(
-            RoundedRectangle(cornerRadius: 24)
-                .stroke(
-                    LinearGradient(
-                        colors: [Color(hex: "D4AF37").opacity(0.4), .clear, Color(hex: "CFB53B").opacity(0.2)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1.5
-                )
-        )
-        .padding(.horizontal)
-        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+        .padding(EdgeInsets(top: 14, leading: 15, bottom: 15, trailing: 15))
+        .background(JikoniColor.card)
+        .clipShape(RoundedRectangle(cornerRadius: JikoniRadius.card))
+        .jikoniShadow(.medium)
     }
 }

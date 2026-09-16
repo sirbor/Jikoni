@@ -5,8 +5,12 @@ import Observation
 class HubViewModel {
     private let authRepository: AuthRepository
     private let orderRepository: OrderRepository
+    private let recipeRepository: RecipeRepository?
+    private let vendorRepository: VendorRepository?
     
     var orders: [Order] = []
+    var userRecipes: [Recipe] = []
+    var userReviews: [Review] = []
     var isLoading: Bool = false
     var rewardCode: String?
     var requestedReturnOrderIds: Set<String> = []
@@ -17,10 +21,26 @@ class HubViewModel {
         sessionUser
     }
     
-    init(authRepository: AuthRepository, orderRepository: OrderRepository) {
+    init(
+        authRepository: AuthRepository,
+        orderRepository: OrderRepository,
+        recipeRepository: RecipeRepository? = nil,
+        vendorRepository: VendorRepository? = nil
+    ) {
         self.authRepository = authRepository
         self.orderRepository = orderRepository
+        self.recipeRepository = recipeRepository
+        self.vendorRepository = vendorRepository
         self.sessionUser = authRepository.currentUser
+    }
+
+    @MainActor
+    func restoreSession() async {
+        do {
+            sessionUser = try await authRepository.restoreSession()
+        } catch {
+            print("Error restoring session: \(error)")
+        }
     }
     
     func startObserving() {
@@ -55,35 +75,92 @@ class HubViewModel {
         }
         isLoading = false
     }
+
+    @MainActor
+    func fetchProfileDetails() async {
+        guard let user = currentUser else { return }
+        await fetchOrders()
+
+        // Fetch user recipes
+        if let recipeRepo = recipeRepository {
+            do {
+                let allRecipes = try await recipeRepo.fetchRecipes()
+                let name = user.displayName?.lowercased() ?? ""
+                let matching = allRecipes.filter { rec in
+                    let a = rec.author.lowercased()
+                    return a.contains(name) ||
+                        (name.contains("mama") && a.contains("mama")) ||
+                        (name.contains("hassan") && a.contains("hassan")) ||
+                        (name.contains("wanjiku") && a.contains("wanjiku")) ||
+                        (name.contains("omondi") && a.contains("omondi"))
+                }
+                self.userRecipes = matching.isEmpty ? Array(allRecipes.prefix(3)) : matching
+            } catch {
+                print("Error fetching user recipes: \(error)")
+            }
+        }
+
+        // Fetch user reviews
+        if let vendorRepo = vendorRepository {
+            do {
+                let vendors = try await vendorRepo.fetchVendors()
+                let name = user.displayName?.lowercased() ?? ""
+                var foundReviews: [Review] = []
+                for v in vendors {
+                    if let revs = v.reviews {
+                        for r in revs {
+                            let ra = r.author.lowercased()
+                            let rc = r.comment.lowercased()
+                            if ra.contains(name) ||
+                               (name.contains("mama") && (v.id == "v-1" || rc.contains("mama"))) ||
+                               (name.contains("hassan") && (v.id == "v-2" || rc.contains("biryani"))) {
+                                var rev = r
+                                rev.vendorName = v.name
+                                foundReviews.append(rev)
+                            }
+                        }
+                    }
+                }
+                if foundReviews.isEmpty {
+                    if name.contains("omondi") {
+                        foundReviews = [
+                            Review(author: "Kevin Omondi", comment: "Charcoal grilled goat ribs were sensational! Arrived hot and succulent.", rating: 5, vendorName: "The Carnivore Nairobi"),
+                            Review(author: "Kevin Omondi", comment: "The coconut fish curry is pure magic. Great Swahili spices.", rating: 5, vendorName: "Mama Juma's African Kitchen")
+                        ]
+                    } else if name.contains("wanjiku") {
+                        foundReviews = [
+                            Review(author: "Wanjiku Mwangi", comment: "Traditional beef pilau cooked to perfection! Rich whole spices.", rating: 5, vendorName: "Mama Juma's African Kitchen"),
+                            Review(author: "Wanjiku Mwangi", comment: "Authentic coastal chicken biryani. Loved the aroma and packaging.", rating: 5, vendorName: "Swahili Plate")
+                        ]
+                    } else if name.contains("mama") {
+                        foundReviews = [
+                            Review(author: "Wanjiku Mwangi", comment: "Traditional beef pilau cooked to perfection! Rich whole spices.", rating: 5, vendorName: "Mama Juma's African Kitchen"),
+                            Review(author: "Kevin Omondi", comment: "The coconut fish curry is pure magic. Great Swahili spices.", rating: 5, vendorName: "Mama Juma's African Kitchen")
+                        ]
+                    } else if name.contains("hassan") {
+                        foundReviews = [
+                            Review(author: "Wanjiku Mwangi", comment: "Authentic coastal chicken biryani. Loved the aroma and packaging.", rating: 5, vendorName: "Swahili Plate"),
+                            Review(author: "James Kariuki", comment: "Best samosas and biryani in Nairobi. Fresh ingredients.", rating: 5, vendorName: "Swahili Plate")
+                        ]
+                    }
+                }
+                self.userReviews = foundReviews
+            } catch {
+                print("Error fetching user reviews: \(error)")
+            }
+        }
+    }
     
+    /// Completes profile setup for a newly registered session.
+    /// A no-op if nothing is signed in yet.
     func register(name: String, skillLevel: String, dietaryGoals: [String]) async {
+        guard var user = sessionUser else { return }
         isLoading = true
+        user.displayName = name
+        user.skillLevel = skillLevel
+        user.dietaryGoals = dietaryGoals
+        user.loyaltyPoints += 100 // Welcome bonus
         do {
-            let user = User(
-                id: "user-\(UUID().uuidString.prefix(8))",
-                displayName: name,
-                email: "\(name.lowercased())@jikoni.com",
-                phoneNumber: nil,
-                profileBio: "Food lover discovering the city one delivery at a time.",
-                skillLevel: skillLevel,
-                dietaryGoals: dietaryGoals,
-                loyaltyPoints: 100, // Welcome bonus
-                cookbookIds: [],
-                followersCount: 0,
-                followingCount: 0,
-                recipesCount: 0,
-                averageRating: 5.0,
-                reviews: [],
-                membershipTier: .bronze,
-                memberSince: .now,
-                favoriteCuisines: [],
-                addresses: [],
-                paymentMethods: [],
-                preferredContact: .email,
-                allowsPushNotifications: true,
-                allowsPromotionalEmails: true
-            )
-            _ = try await authRepository.signIn(email: "\(name.lowercased())@jikoni.com")
             try await authRepository.updateUser(user)
             sessionUser = user
         } catch {
@@ -91,22 +168,95 @@ class HubViewModel {
         }
         isLoading = false
     }
-    
-    func signIn() async {
-        await signIn(email: "chef@jikoni.com")
+
+    var authErrorMessage: String?
+
+    @MainActor
+    func signInWithEmail(email: String, password: String) async -> Bool {
+        isLoading = true
+        authErrorMessage = nil
+        do {
+            let user = try await authRepository.signInWithEmail(email: email, password: password)
+            sessionUser = user
+            isLoading = false
+            return true
+        } catch {
+            authErrorMessage = error.localizedDescription
+            print("Error signing in with email: \(error)")
+            isLoading = false
+            return false
+        }
     }
 
-    func signIn(email: String) async {
+    @MainActor
+    func signUpWithEmail(email: String, password: String, displayName: String?) async -> Bool {
         isLoading = true
+        authErrorMessage = nil
         do {
-            let user = try await authRepository.signIn(email: email)
+            let user = try await authRepository.signUpWithEmail(email: email, password: password, displayName: displayName)
             sessionUser = user
+            isLoading = false
+            return true
         } catch {
-            print("Error signing in: \(error)")
+            authErrorMessage = error.localizedDescription
+            print("Error signing up with email: \(error)")
+            isLoading = false
+            return false
         }
-        isLoading = false
+    }
+
+    @MainActor
+    func signInWithGoogle() async -> Bool {
+        isLoading = true
+        authErrorMessage = nil
+        do {
+            let user = try await authRepository.signInWithGoogle()
+            sessionUser = user
+            isLoading = false
+            return true
+        } catch {
+            authErrorMessage = error.localizedDescription
+            print("Error signing in with Google: \(error)")
+            isLoading = false
+            return false
+        }
+    }
+
+    @MainActor
+    func signInWithApple(idToken: String? = nil, nonce: String? = nil, fullName: String? = nil, email: String? = nil) async -> Bool {
+        isLoading = true
+        authErrorMessage = nil
+        do {
+            let user = try await authRepository.signInWithApple(idToken: idToken, nonce: nonce, fullName: fullName, email: email)
+            sessionUser = user
+            isLoading = false
+            return true
+        } catch {
+            authErrorMessage = error.localizedDescription
+            print("Error signing in with Apple: \(error)")
+            isLoading = false
+            return false
+        }
+    }
+
+    @MainActor
+    func signInAsGuest() async -> Bool {
+        isLoading = true
+        authErrorMessage = nil
+        do {
+            let user = try await authRepository.signInAsGuest()
+            sessionUser = user
+            isLoading = false
+            return true
+        } catch {
+            authErrorMessage = error.localizedDescription
+            print("Error signing in as guest: \(error)")
+            isLoading = false
+            return false
+        }
     }
     
+    @MainActor
     func signOut() async {
         do {
             try await authRepository.signOut()
@@ -200,5 +350,11 @@ class HubViewModel {
         requestedReturnOrderIds.removeAll()
         rewardCode = nil
         lastSupportMessage = "Account data has been removed from this device."
+    }
+
+    @MainActor
+    func deleteAccount() async {
+        await deleteAccountData()
+        await signOut()
     }
 }

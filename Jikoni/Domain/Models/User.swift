@@ -1,7 +1,7 @@
 import Foundation
 
 struct User: Identifiable, Codable, Equatable {
-    let id: String
+    var id: String
     var displayName: String? = nil
     var email: String = ""
     var phoneNumber: String? = nil

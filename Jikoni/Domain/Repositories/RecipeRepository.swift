@@ -5,4 +5,5 @@ protocol RecipeRepository {
     func streamRecipes() -> AsyncStream<[Recipe]>
     func toggleLike(recipeId: String) async throws
     func createRecipe(_ recipe: Recipe) async throws
+    func addComment(recipeId: String, comment: Comment) async throws
 }

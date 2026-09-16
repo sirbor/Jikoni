@@ -23,8 +23,13 @@
 		<key>UIColorName</key>
 		<string>LaunchScreenBackground</string>
 		<key>UIImageName</key>
-		<string>AppIcon</string>
+		<string>Logo</string>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Archivo-Variable.ttf</string>
+		<string>InstrumentSerif-Regular.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

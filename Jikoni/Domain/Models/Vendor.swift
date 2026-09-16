@@ -6,7 +6,7 @@ struct Vendor: Identifiable, Codable, Equatable {
     let cuisine: String
     let imageUrls: [String]
     let deliveryFee: Double
-    let rating: Double
+    var rating: Double
     let location: Location
     var inventory: [String: [Ingredient]]?
     var reviews: [Review]?

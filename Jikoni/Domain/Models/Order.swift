@@ -2,6 +2,7 @@ import Foundation
 
 struct Order: Identifiable, Codable, Equatable {
     let id: String
+    var userId: String? = nil
     let items: [Ingredient]
     var status: OrderStatus
     var total: Double
@@ -25,4 +26,5 @@ enum OrderStatus: String, Codable, CaseIterable {
     case riderAssigned
     case onTheWay
     case delivered
+    case cancelled
 }

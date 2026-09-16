@@ -1,0 +1,21 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+
+# Secrets — never commit real Supabase credentials
+Jikoni/Secrets.plist
+
+# macOS
+.DS_Store
+*.DS_Store
+
+# IDE & Editor
+.idea/
+.nvim/
+
+# Standalone Exports
+*.html
+

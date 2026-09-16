@@ -8,121 +8,121 @@
 
 /* Begin PBXBuildFile section */
 		05335FE47518014B804D5353 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226271048D1915582D0D2F1 /* AuthRepository.swift */; };
-		0B7B18A91C12E53F2C208EB0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88612EEC295C86617B204F05 /* ProfileView.swift */; };
+		09F4AF4F95C718502A5B19D0 /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D052A3821C29348BE232585 /* RepositoryFactory.swift */; };
+		0A3F63FE22D14BE963ADDD91 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B3A3717F0711CD3EDDEDB0 /* OrderView.swift */; };
+		170A06C0437C78C9B2D2C89F /* SupabaseClientProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2F352E3BEA2B79E96A03EC /* SupabaseClientProvider.swift */; };
 		184013448853FCEA94DAA491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3E2F6796126DAAAB596D9B /* Assets.xcassets */; };
+		188FD29A66AD36FB8A9CE0E4 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2AD7B12CA60FF37BCD99612E /* Supabase */; };
+		18DC6670F1FCF8262E2897C5 /* JikoniDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73C11AE5FFDF3F6A4CEAED7 /* JikoniDesign.swift */; };
+		1A31311C2ABEEEC79FFBF5C6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FEF161A5075EB849D5D70E /* WelcomeView.swift */; };
 		209C13890A0C4251E708CCAB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC130C9F966913B81EA87E13 /* Review.swift */; };
-		2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */; };
-		291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126569B1E28B771DA3D32DB /* CartView.swift */; };
-		29C31591433857EAD662F7E0 /* SavedRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */; };
+		272538EEF4780A60458E823A /* InstrumentSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1763768E2ECBBF81E3C72C72 /* InstrumentSerif-Regular.ttf */; };
 		2B6570D4EBEE3751329FFAD3 /* MockRecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */; };
+		2B873E63B0B73343EDEE6640 /* SupabaseAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAC8C90100DDC738027C6B /* SupabaseAuthRepository.swift */; };
+		2EFB3A41ECAF7ED73A003B63 /* VendorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C3AE9DDBC03271AAFFC2A7 /* VendorDetailView.swift */; };
+		35549BC41525FD993C28DB01 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30AF3EC4633B944CEB300239 /* Secrets.plist */; };
 		3593CF48776B38172A1A48AC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3D2A1BB9631581B7609269 /* Location.swift */; };
-		37EC1D8875BDC1C311F4361B /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */; };
-		38B55CD725249DFF249821EE /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */; };
+		35A21F3AD73F10087373B632 /* SupabaseVendorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E028DF3443D42B86D4209EBF /* SupabaseVendorRepository.swift */; };
 		48CD9D7DC9BBA17783FFE97A /* MarketplaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */; };
-		4BB70363F672661F43555C70 /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FF90E956B49831326AE0A2 /* IngredientRow.swift */; };
+		5652C5B0DE9CB44D5E7D218B /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC6EB4003B0E8675138B0E /* ItemDetailView.swift */; };
+		5898A5FEDEFF85C05A03B241 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E0AA522A969999E7E3F6C /* PaymentView.swift */; };
+		5C017D47412CEEB4019E99AE /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0875A2916D2DF8C6809B52E /* AddressView.swift */; };
+		6A03555F8E0E8747389704F5 /* Archivo-Variable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A2B6562F84DCCF01F3D3400 /* Archivo-Variable.ttf */; };
 		6C304533C6E087E49407901D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97EF183D153C40053C3C00A /* Recipe.swift */; };
-		75F70F5820C8BE2660D2B36B /* VendorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F15E163ADE1874B7D1B98E /* VendorCard.swift */; };
+		776C12F49A29F5C0F24FA747 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA00DF210A02B6F5842C0F /* SupabaseConfig.swift */; };
 		77ACA53C320F601AD96390C0 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */; };
-		78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */; };
-		790DB74684AA968C9CAE23E5 /* DrinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA07E9D5B610FFD92539945 /* DrinksView.swift */; };
-		7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C12598556F36378A95B8A6 /* SettingsView.swift */; };
-		7FF92D1F48942C0820CB0A79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */; };
-		836156CA7D8F126DA1B2F61D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9A4C074B5177E046B6B15C /* EditProfileView.swift */; };
+		7AB5B0E79B3B3E31A3A069E9 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979CC32EAF2B9B5EF9AAEAC7 /* FeedView.swift */; };
 		8986B39444CB2B8B6E98D287 /* MockAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */; };
-		90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C215437803622EAB89C95976 /* CartAndWishlistView.swift */; };
+		93780A390618E1F6DCC0B289 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C6FB89EE3CC99EA1543E43 /* OrdersView.swift */; };
 		94B07C616D10C20DD83BFBFE /* JikoniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E556A53F6D825A56E33EAB /* JikoniApp.swift */; };
 		94B9CDD18209AB787B49A10F /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6F1B86157A1661F250464 /* FeedViewModel.swift */; };
-		96B7D57676135FFCAA5FE49B /* PaymentVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */; };
 		9C7C55A8FBEB687F3C068ACE /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF2A8FC038476316C17E50A /* Ingredient.swift */; };
-		A85BC2084A93217F1DB1CBF5 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F6C9E53233872FD3A9B4A6 /* FeedView.swift */; };
+		A25978FC27E3416B66FC720C /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B9B29399FDAC458DB6A836 /* CartView.swift */; };
+		ABB8E9F8D67B5858233E7892 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEDE2C45D01CDD42A6FCF6 /* TrackingView.swift */; };
+		ABF9825BE95436375C872A15 /* CreateRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF2CA02A26A36AAE0F6B46A /* CreateRecipeView.swift */; };
 		B3335FBF832A22E75C095358 /* MockVendorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */; };
-		B4031856F9B40F52451AA6CF /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */; };
+		B489FBDC3310C9CAB6FDA26D /* SupabaseOrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928F74809756781166CF03B /* SupabaseOrderRepository.swift */; };
 		B585374214EF07A4EC90F959 /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4F4E64326D93B5F656A229 /* RecipeRepository.swift */; };
-		B65AB9FB93ADDE9BDF6E8B40 /* TrackingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */; };
-		BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85642CC2D42F7E899E2DD350 /* ExploreView.swift */; };
+		B6875DC225216B10FEF96A95 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932E2572535553822034F76 /* ProfileView.swift */; };
 		BEDD549D15C1AE40FA4386A5 /* MockOrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92DB90E0099743977688439 /* MockOrderRepository.swift */; };
-		C7E18DBAB5B9D21F884A3DB1 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6816283CCD6539B8DADE44D0 /* AddReviewView.swift */; };
+		BEDF396BDBB7054A21033FFC /* JikoniChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70404EF6D4E425200E4E0C /* JikoniChrome.swift */; };
+		C6ECEE4C7A83DB4E0B7F9245 /* FloatingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56CAE0FF91D532C45B370EB /* FloatingCartButton.swift */; };
 		C89A90658C32B827373FB9A5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77C7468996B81C4E6F54EF3 /* Order.swift */; };
-		CCB660615E8BEDEE2DF214C9 /* SupportCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E141335D60E262DB088547A /* SupportCenterView.swift */; };
-		CCBFCF8713FA5C40A5A16517 /* JikoniLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */; };
 		D2CF1DF44F18CD82BE01FD34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A618A1E048DE24D862641A0 /* User.swift */; };
-		D4266A69E0DB7A771C6979BA /* JikoniButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */; };
 		D4AC7A685251151287841446 /* VendorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E4DE43D7925F359821D7B /* VendorRepository.swift */; };
-		D8879524804999ECD7ADCF4D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F476A37165017187BBE13 /* LoginView.swift */; };
-		D9D28DC01C8D2460AB72C062 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */; };
+		D641373AD981B7D918919C1A /* CookbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9D1C3C72A0FC57A4F36600 /* CookbookView.swift */; };
+		E3D456D424C92CA8A5DEBB20 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26463EF64EE75D3D148AB5EA /* RecipeDetailView.swift */; };
 		E5B4E7602AC57E6842D48B32 /* OrderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE749AE4B8DCC435AB2C9A2 /* OrderRepository.swift */; };
-		E746E8F748C389A5E32DBE3D /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46371B77C63E93C5D2D58420 /* TrackingView.swift */; };
-		E7852EF20EDE465E73A5ECFC /* VendorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362936C16AD4947837735FB /* VendorDetailView.swift */; };
 		E860B75DFCEC47E7E7D3B203 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34709767C108C4326F1684A2 /* Vendor.swift */; };
-		ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D2E90B54BF153E59CE5043 /* RewardsView.swift */; };
-		FA7EB0362E8F499BF1FB1E0D /* FloatingCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */; };
-		FBE09F0850965AD30920B596 /* ReviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B61F24103C62DDEB5C17DF /* ReviewCard.swift */; };
+		F2FC5D65AEDC6A6FCABEBA56 /* SupabaseRecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9CB7C020AA003E69C2EE78 /* SupabaseRecipeRepository.swift */; };
+		F571A43D95F05F042EA4B519 /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A12E3E5F84A34C5ACFB7E9D /* RecipeCard.swift */; };
 		FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubViewModel.swift; sourceTree = "<group>"; };
 		058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
-		08F6C9E53233872FD3A9B4A6 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
-		092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingOverlay.swift; sourceTree = "<group>"; };
-		1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVaultView.swift; sourceTree = "<group>"; };
-		1E141335D60E262DB088547A /* SupportCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCenterView.swift; sourceTree = "<group>"; };
-		23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
-		25F15E163ADE1874B7D1B98E /* VendorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCard.swift; sourceTree = "<group>"; };
+		0BFAC8C90100DDC738027C6B /* SupabaseAuthRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseAuthRepository.swift; sourceTree = "<group>"; };
+		1763768E2ECBBF81E3C72C72 /* InstrumentSerif-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "InstrumentSerif-Regular.ttf"; sourceTree = "<group>"; };
+		1A12E3E5F84A34C5ACFB7E9D /* RecipeCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		26463EF64EE75D3D148AB5EA /* RecipeDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		2932E2572535553822034F76 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2E0E0AA522A969999E7E3F6C /* PaymentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		30AF3EC4633B944CEB300239 /* Secrets.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		34709767C108C4326F1684A2 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		358E4DE43D7925F359821D7B /* VendorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorRepository.swift; sourceTree = "<group>"; };
 		3EEEBD3F130519BB20FA8903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4226271048D1915582D0D2F1 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		43DB20CBCC6F694B07266E3A /* MockRecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRecipeRepository.swift; sourceTree = "<group>"; };
-		46371B77C63E93C5D2D58420 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
-		4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniLogo.swift; sourceTree = "<group>"; };
 		52F4734890A351B03C9878F9 /* Jikoni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jikoni.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AA07E9D5B610FFD92539945 /* DrinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksView.swift; sourceTree = "<group>"; };
-		62FF90E956B49831326AE0A2 /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
-		6816283CCD6539B8DADE44D0 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
-		721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesView.swift; sourceTree = "<group>"; };
-		74C12598556F36378A95B8A6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5D052A3821C29348BE232585 /* RepositoryFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
+		73FEF161A5075EB849D5D70E /* WelcomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		74E556A53F6D825A56E33EAB /* JikoniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniApp.swift; sourceTree = "<group>"; };
+		7A2B6562F84DCCF01F3D3400 /* Archivo-Variable.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "Archivo-Variable.ttf"; sourceTree = "<group>"; };
 		7A618A1E048DE24D862641A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewModel.swift; sourceTree = "<group>"; };
 		7F4F4E64326D93B5F656A229 /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		85642CC2D42F7E899E2DD350 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
-		88612EEC295C86617B204F05 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikoniButton.swift; sourceTree = "<group>"; };
-		9362936C16AD4947837735FB /* VendorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailView.swift; sourceTree = "<group>"; };
-		94B61F24103C62DDEB5C17DF /* ReviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCard.swift; sourceTree = "<group>"; };
-		A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
-		A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		8DF2CA02A26A36AAE0F6B46A /* CreateRecipeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CreateRecipeView.swift; sourceTree = "<group>"; };
+		979CC32EAF2B9B5EF9AAEAC7 /* FeedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		9C70404EF6D4E425200E4E0C /* JikoniChrome.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JikoniChrome.swift; sourceTree = "<group>"; };
+		9F2F352E3BEA2B79E96A03EC /* SupabaseClientProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseClientProvider.swift; sourceTree = "<group>"; };
+		A3B9B29399FDAC458DB6A836 /* CartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		A5AC6EB4003B0E8675138B0E /* ItemDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		A8DD0E5BA4B83B313700D263 /* MockAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthRepository.swift; sourceTree = "<group>"; };
 		A92DB90E0099743977688439 /* MockOrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderRepository.swift; sourceTree = "<group>"; };
-		B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		AFEA00DF210A02B6F5842C0F /* SupabaseConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
 		BAF2A8FC038476316C17E50A /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		BD9A4C074B5177E046B6B15C /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		C00F476A37165017187BBE13 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		C215437803622EAB89C95976 /* CartAndWishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAndWishlistView.swift; sourceTree = "<group>"; };
+		C0875A2916D2DF8C6809B52E /* AddressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		C73C11AE5FFDF3F6A4CEAED7 /* JikoniDesign.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JikoniDesign.swift; sourceTree = "<group>"; };
 		CAD8BBA49863759F4A5CDDA4 /* MockVendorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVendorRepository.swift; sourceTree = "<group>"; };
-		D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCartButton.swift; sourceTree = "<group>"; };
-		D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D3C3AE9DDBC03271AAFFC2A7 /* VendorDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VendorDetailView.swift; sourceTree = "<group>"; };
 		D77C7468996B81C4E6F54EF3 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		D928F74809756781166CF03B /* SupabaseOrderRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseOrderRepository.swift; sourceTree = "<group>"; };
 		D97EF183D153C40053C3C00A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		E6D2E90B54BF153E59CE5043 /* RewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsView.swift; sourceTree = "<group>"; };
+		E028DF3443D42B86D4209EBF /* SupabaseVendorRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseVendorRepository.swift; sourceTree = "<group>"; };
+		E56CAE0FF91D532C45B370EB /* FloatingCartButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FloatingCartButton.swift; sourceTree = "<group>"; };
+		E6C6FB89EE3CC99EA1543E43 /* OrdersView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
 		EBE749AE4B8DCC435AB2C9A2 /* OrderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRepository.swift; sourceTree = "<group>"; };
 		ED3D2A1BB9631581B7609269 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVaultView.swift; sourceTree = "<group>"; };
+		EE9CB7C020AA003E69C2EE78 /* SupabaseRecipeRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseRecipeRepository.swift; sourceTree = "<group>"; };
 		F0C6F1B86157A1661F250464 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		F126569B1E28B771DA3D32DB /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		F3B3A3717F0711CD3EDDEDB0 /* OrderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		F9BEDE2C45D01CDD42A6FCF6 /* TrackingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		FA3E2F6796126DAAAB596D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC130C9F966913B81EA87E13 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
-		FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		FC9D1C3C72A0FC57A4F36600 /* CookbookView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CookbookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		15BBF45D2F81548E00FFB835 /* Screenshots */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Screenshots;
-			sourceTree = "<group>";
+/* Begin PBXFrameworksBuildPhase section */
+		C96C8459FDFD224885198011 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				188FD29A66AD36FB8A9CE0E4 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXFileSystemSynchronizedRootGroup section */
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		126AD26A979F54F11FBF395F /* Models */ = {
@@ -142,7 +142,8 @@
 		142E45FF13E8B283E6CBA161 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				D6A863B7F80BEE8B540BD63A /* NetworkManager.swift */,
+				2A107DF421BA35E1E0791EA9 /* Supabase */,
+				5D052A3821C29348BE232585 /* RepositoryFactory.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -150,13 +151,8 @@
 		22CA3B51E593F57D8539139D /* Hub */ = {
 			isa = PBXGroup;
 			children = (
-				EF5AF92383A0D08BA2C47E01 /* AddressVaultView.swift */,
 				04F500BAE75E2C1D7AB753B6 /* HubViewModel.swift */,
-				A3FDEAF40AFB96F30D3183C1 /* OrderHistoryView.swift */,
-				1AD6FBB1C364494754ADCF49 /* PaymentVaultView.swift */,
-				E6D2E90B54BF153E59CE5043 /* RewardsView.swift */,
-				74C12598556F36378A95B8A6 /* SettingsView.swift */,
-				1E141335D60E262DB088547A /* SupportCenterView.swift */,
+				E6C6FB89EE3CC99EA1543E43 /* OrdersView.swift */,
 			);
 			path = Hub;
 			sourceTree = "<group>";
@@ -164,15 +160,45 @@
 		271D9BDA705C87B16CD9B8F6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8E91E432C082B23DB56FF328 /* Auth */,
 				BD5F6F219269AFDE75520860 /* Components */,
 				EBA75AE4E881E76E326CBF57 /* Feed */,
 				22CA3B51E593F57D8539139D /* Hub */,
 				FC8E1E9FACA4C47322D7BA18 /* Marketplace */,
 				7CF940F65DB48A83060C365F /* Profile */,
 				BA1CD0BEBCEC5AE0F2C5A6B1 /* Tracking */,
+				BD57F8B900DE7AD03C2BBE20 /* DesignSystem */,
+				E6FE939D2240157B31264F2D /* Onboarding */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		2A107DF421BA35E1E0791EA9 /* Supabase */ = {
+			isa = PBXGroup;
+			children = (
+				AFEA00DF210A02B6F5842C0F /* SupabaseConfig.swift */,
+				9F2F352E3BEA2B79E96A03EC /* SupabaseClientProvider.swift */,
+			);
+			path = Supabase;
+			sourceTree = "<group>";
+		};
+		3D1CEF581052370B0549FB30 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7A2B6562F84DCCF01F3D3400 /* Archivo-Variable.ttf */,
+				1763768E2ECBBF81E3C72C72 /* InstrumentSerif-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		45D6F9E5EC98897B5959718A /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				0BFAC8C90100DDC738027C6B /* SupabaseAuthRepository.swift */,
+				EE9CB7C020AA003E69C2EE78 /* SupabaseRecipeRepository.swift */,
+				E028DF3443D42B86D4209EBF /* SupabaseVendorRepository.swift */,
+				D928F74809756781166CF03B /* SupabaseOrderRepository.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		4C60C6AEFBBB9FB4A77F0BBF = {
@@ -186,8 +212,7 @@
 		7CF940F65DB48A83060C365F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				BD9A4C074B5177E046B6B15C /* EditProfileView.swift */,
-				88612EEC295C86617B204F05 /* ProfileView.swift */,
+				2932E2572535553822034F76 /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -200,37 +225,37 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8E91E432C082B23DB56FF328 /* Auth */ = {
+		AF2FEB4E6C28925E6678ABA0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C00F476A37165017187BBE13 /* LoginView.swift */,
-				A01D8339C62C7C9DE3DB001A /* RegistrationView.swift */,
+				3D1CEF581052370B0549FB30 /* Fonts */,
 			);
-			path = Auth;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		BA1CD0BEBCEC5AE0F2C5A6B1 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				092D3D7512359ADB3DB54A3C /* TrackingOverlay.swift */,
-				46371B77C63E93C5D2D58420 /* TrackingView.swift */,
 				058045AA6197EEE6F11CE5B2 /* TrackingViewModel.swift */,
+				F9BEDE2C45D01CDD42A6FCF6 /* TrackingView.swift */,
 			);
 			path = Tracking;
+			sourceTree = "<group>";
+		};
+		BD57F8B900DE7AD03C2BBE20 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				C73C11AE5FFDF3F6A4CEAED7 /* JikoniDesign.swift */,
+				9C70404EF6D4E425200E4E0C /* JikoniChrome.swift */,
+			);
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		BD5F6F219269AFDE75520860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6816283CCD6539B8DADE44D0 /* AddReviewView.swift */,
-				D3D8BFCD2691CDA8613E0392 /* FloatingCartButton.swift */,
-				62FF90E956B49831326AE0A2 /* IngredientRow.swift */,
-				8B990B1AF1E067DAD1301F16 /* JikoniButton.swift */,
-				4FD329DA31F1D35FDAC68167 /* JikoniLogo.swift */,
-				FDCAEB547DDE664F0F201964 /* LaunchScreenView.swift */,
-				23E56A4315F3CCCEB0C1B112 /* RecipeCard.swift */,
-				94B61F24103C62DDEB5C17DF /* ReviewCard.swift */,
-				25F15E163ADE1874B7D1B98E /* VendorCard.swift */,
+				1A12E3E5F84A34C5ACFB7E9D /* RecipeCard.swift */,
+				E56CAE0FF91D532C45B370EB /* FloatingCartButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -250,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E0666A9081045D491BD9BE11 /* Mocks */,
+				45D6F9E5EC98897B5959718A /* Remote */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -265,6 +291,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		E6FE939D2240157B31264F2D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				73FEF161A5075EB849D5D70E /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		E775DD49BCE94077B9AEE967 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,10 +311,11 @@
 		EBA75AE4E881E76E326CBF57 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				08F6C9E53233872FD3A9B4A6 /* FeedView.swift */,
 				F0C6F1B86157A1661F250464 /* FeedViewModel.swift */,
-				B48EE6BDEFC683CF6CBBD395 /* RecipeDetailView.swift */,
-				721B49DCE45CA1435F491F7F /* SavedRecipesView.swift */,
+				979CC32EAF2B9B5EF9AAEAC7 /* FeedView.swift */,
+				26463EF64EE75D3D148AB5EA /* RecipeDetailView.swift */,
+				FC9D1C3C72A0FC57A4F36600 /* CookbookView.swift */,
+				8DF2CA02A26A36AAE0F6B46A /* CreateRecipeView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -288,12 +323,13 @@
 		FC8E1E9FACA4C47322D7BA18 /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
-				C215437803622EAB89C95976 /* CartAndWishlistView.swift */,
-				F126569B1E28B771DA3D32DB /* CartView.swift */,
-				5AA07E9D5B610FFD92539945 /* DrinksView.swift */,
-				85642CC2D42F7E899E2DD350 /* ExploreView.swift */,
 				7C929597FA682290395E99E6 /* MarketplaceViewModel.swift */,
-				9362936C16AD4947837735FB /* VendorDetailView.swift */,
+				F3B3A3717F0711CD3EDDEDB0 /* OrderView.swift */,
+				D3C3AE9DDBC03271AAFFC2A7 /* VendorDetailView.swift */,
+				A5AC6EB4003B0E8675138B0E /* ItemDetailView.swift */,
+				A3B9B29399FDAC458DB6A836 /* CartView.swift */,
+				C0875A2916D2DF8C6809B52E /* AddressView.swift */,
+				2E0E0AA522A969999E7E3F6C /* PaymentView.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -301,7 +337,6 @@
 		FD576B65B39EB2B9000D469D /* Jikoni */ = {
 			isa = PBXGroup;
 			children = (
-				15BBF45D2F81548E00FFB835 /* Screenshots */,
 				FA3E2F6796126DAAAB596D9B /* Assets.xcassets */,
 				3EEEBD3F130519BB20FA8903 /* Info.plist */,
 				74E556A53F6D825A56E33EAB /* JikoniApp.swift */,
@@ -309,6 +344,8 @@
 				E775DD49BCE94077B9AEE967 /* Domain */,
 				142E45FF13E8B283E6CBA161 /* Infrastructure */,
 				271D9BDA705C87B16CD9B8F6 /* Presentation */,
+				30AF3EC4633B944CEB300239 /* Secrets.plist */,
+				AF2FEB4E6C28925E6678ABA0 /* Resources */,
 			);
 			path = Jikoni;
 			sourceTree = "<group>";
@@ -322,16 +359,17 @@
 			buildPhases = (
 				1148635A0A3B83C0EF975AE2 /* Sources */,
 				A11D526A12056B4095EAC1E4 /* Resources */,
+				C96C8459FDFD224885198011 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				15BBF45D2F81548E00FFB835 /* Screenshots */,
 			);
 			name = Jikoni;
 			packageProductDependencies = (
+				2AD7B12CA60FF37BCD99612E /* Supabase */,
 			);
 			productName = Jikoni;
 			productReference = 52F4734890A351B03C9878F9 /* Jikoni.app */;
@@ -360,6 +398,9 @@
 			);
 			mainGroup = 4C60C6AEFBBB9FB4A77F0BBF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				970ED109266EB3A3198599FC /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7F91937A4862EFACB6718CF8 /* Products */;
 			projectDirPath = "";
@@ -376,6 +417,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				184013448853FCEA94DAA491 /* Assets.xcassets in Resources */,
+				35549BC41525FD993C28DB01 /* Secrets.plist in Resources */,
+				6A03555F8E0E8747389704F5 /* Archivo-Variable.ttf in Resources */,
+				272538EEF4780A60458E823A /* InstrumentSerif-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,56 +430,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E18DBAB5B9D21F884A3DB1 /* AddReviewView.swift in Sources */,
-				2628BF389B98A8B020DD7DA7 /* AddressVaultView.swift in Sources */,
 				05335FE47518014B804D5353 /* AuthRepository.swift in Sources */,
-				90BBFD26139B673ABBD56A5B /* CartAndWishlistView.swift in Sources */,
-				291D8B5DED2B33BC6F4519F0 /* CartView.swift in Sources */,
-				790DB74684AA968C9CAE23E5 /* DrinksView.swift in Sources */,
-				836156CA7D8F126DA1B2F61D /* EditProfileView.swift in Sources */,
-				BA3EA4614D280ACACE2A88AA /* ExploreView.swift in Sources */,
-				A85BC2084A93217F1DB1CBF5 /* FeedView.swift in Sources */,
 				94B9CDD18209AB787B49A10F /* FeedViewModel.swift in Sources */,
-				FA7EB0362E8F499BF1FB1E0D /* FloatingCartButton.swift in Sources */,
 				FCD5C7E86D748CE9F26153A1 /* HubViewModel.swift in Sources */,
 				9C7C55A8FBEB687F3C068ACE /* Ingredient.swift in Sources */,
-				4BB70363F672661F43555C70 /* IngredientRow.swift in Sources */,
 				94B07C616D10C20DD83BFBFE /* JikoniApp.swift in Sources */,
-				D4266A69E0DB7A771C6979BA /* JikoniButton.swift in Sources */,
-				CCBFCF8713FA5C40A5A16517 /* JikoniLogo.swift in Sources */,
-				D9D28DC01C8D2460AB72C062 /* LaunchScreenView.swift in Sources */,
 				3593CF48776B38172A1A48AC /* Location.swift in Sources */,
-				D8879524804999ECD7ADCF4D /* LoginView.swift in Sources */,
 				48CD9D7DC9BBA17783FFE97A /* MarketplaceViewModel.swift in Sources */,
 				8986B39444CB2B8B6E98D287 /* MockAuthRepository.swift in Sources */,
 				BEDD549D15C1AE40FA4386A5 /* MockOrderRepository.swift in Sources */,
 				2B6570D4EBEE3751329FFAD3 /* MockRecipeRepository.swift in Sources */,
 				B3335FBF832A22E75C095358 /* MockVendorRepository.swift in Sources */,
-				7FF92D1F48942C0820CB0A79 /* NetworkManager.swift in Sources */,
 				C89A90658C32B827373FB9A5 /* Order.swift in Sources */,
-				37EC1D8875BDC1C311F4361B /* OrderHistoryView.swift in Sources */,
 				E5B4E7602AC57E6842D48B32 /* OrderRepository.swift in Sources */,
-				96B7D57676135FFCAA5FE49B /* PaymentVaultView.swift in Sources */,
-				0B7B18A91C12E53F2C208EB0 /* ProfileView.swift in Sources */,
 				6C304533C6E087E49407901D /* Recipe.swift in Sources */,
-				B4031856F9B40F52451AA6CF /* RecipeCard.swift in Sources */,
-				38B55CD725249DFF249821EE /* RecipeDetailView.swift in Sources */,
 				B585374214EF07A4EC90F959 /* RecipeRepository.swift in Sources */,
-				78A968A5FF4A10974DAE0A31 /* RegistrationView.swift in Sources */,
 				209C13890A0C4251E708CCAB /* Review.swift in Sources */,
-				FBE09F0850965AD30920B596 /* ReviewCard.swift in Sources */,
-				ED7E9A7ACA03432EEC5B1FCE /* RewardsView.swift in Sources */,
-				29C31591433857EAD662F7E0 /* SavedRecipesView.swift in Sources */,
-				7CE30ECA39C234076AF2EDEE /* SettingsView.swift in Sources */,
-				CCB660615E8BEDEE2DF214C9 /* SupportCenterView.swift in Sources */,
-				B65AB9FB93ADDE9BDF6E8B40 /* TrackingOverlay.swift in Sources */,
-				E746E8F748C389A5E32DBE3D /* TrackingView.swift in Sources */,
 				77ACA53C320F601AD96390C0 /* TrackingViewModel.swift in Sources */,
 				D2CF1DF44F18CD82BE01FD34 /* User.swift in Sources */,
 				E860B75DFCEC47E7E7D3B203 /* Vendor.swift in Sources */,
-				75F70F5820C8BE2660D2B36B /* VendorCard.swift in Sources */,
-				E7852EF20EDE465E73A5ECFC /* VendorDetailView.swift in Sources */,
 				D4AC7A685251151287841446 /* VendorRepository.swift in Sources */,
+				2B873E63B0B73343EDEE6640 /* SupabaseAuthRepository.swift in Sources */,
+				F2FC5D65AEDC6A6FCABEBA56 /* SupabaseRecipeRepository.swift in Sources */,
+				35A21F3AD73F10087373B632 /* SupabaseVendorRepository.swift in Sources */,
+				B489FBDC3310C9CAB6FDA26D /* SupabaseOrderRepository.swift in Sources */,
+				776C12F49A29F5C0F24FA747 /* SupabaseConfig.swift in Sources */,
+				170A06C0437C78C9B2D2C89F /* SupabaseClientProvider.swift in Sources */,
+				09F4AF4F95C718502A5B19D0 /* RepositoryFactory.swift in Sources */,
+				18DC6670F1FCF8262E2897C5 /* JikoniDesign.swift in Sources */,
+				BEDF396BDBB7054A21033FFC /* JikoniChrome.swift in Sources */,
+				1A31311C2ABEEEC79FFBF5C6 /* WelcomeView.swift in Sources */,
+				F571A43D95F05F042EA4B519 /* RecipeCard.swift in Sources */,
+				7AB5B0E79B3B3E31A3A069E9 /* FeedView.swift in Sources */,
+				E3D456D424C92CA8A5DEBB20 /* RecipeDetailView.swift in Sources */,
+				D641373AD981B7D918919C1A /* CookbookView.swift in Sources */,
+				ABF9825BE95436375C872A15 /* CreateRecipeView.swift in Sources */,
+				0A3F63FE22D14BE963ADDD91 /* OrderView.swift in Sources */,
+				C6ECEE4C7A83DB4E0B7F9245 /* FloatingCartButton.swift in Sources */,
+				2EFB3A41ECAF7ED73A003B63 /* VendorDetailView.swift in Sources */,
+				5652C5B0DE9CB44D5E7D218B /* ItemDetailView.swift in Sources */,
+				A25978FC27E3416B66FC720C /* CartView.swift in Sources */,
+				5C017D47412CEEB4019E99AE /* AddressView.swift in Sources */,
+				5898A5FEDEFF85C05A03B241 /* PaymentView.swift in Sources */,
+				ABB8E9F8D67B5858233E7892 /* TrackingView.swift in Sources */,
+				B6875DC225216B10FEF96A95 /* ProfileView.swift in Sources */,
+				93780A390618E1F6DCC0B289 /* OrdersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +662,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		970ED109266EB3A3198599FC /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2AD7B12CA60FF37BCD99612E /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 970ED109266EB3A3198599FC /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EEA6FA31D22CAE548EDA3041 /* Project object */;
 }
